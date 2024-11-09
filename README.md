@@ -1,6 +1,6 @@
 # Répartition des Tâches - Projet Annuaire de Spectacles Parisiens
 
-## 1. Base de Données (Personne 1)
+## 1. Base de Données (Oscar)
 - **Conception initiale de la base de données :**
   - Création des tables principales (sans dépendances complexes) : `Lieu`, `Salle`, `Utilisateur`.
 - **Création des scripts SQL :**
@@ -10,7 +10,7 @@
 
 ---
 
-## 2. Backend Utilisateurs (Personne 2)
+## 2. Backend Utilisateurs(login) (Baptiste)
 - **Gestion des utilisateurs :**
   - Inscription, connexion et déconnexion des utilisateurs.
   - Gestion des profils utilisateurs de manière isolée (sans interaction directe avec les autres entités pour le moment).
@@ -19,7 +19,7 @@
 
 ---
 
-## 3. Backend Spectacles et Réservations (Personne 3)
+## 3. Backend Spectacles et Réservations (Alexis)
 - **Gestion des spectacles :**
   - CRUD pour les spectacles, avec gestion des représentations (en utilisant des données simulées si la base n'est pas encore finalisée).
 - **Réservation :**
@@ -29,7 +29,7 @@
 
 ---
 
-## 4. Frontend (Personne 4)
+## 4. Frontend (Issa)
 - **Pages statiques HTML/CSS :**
   - Création des pages principales (page d'accueil, page de liste de spectacles, page d'inscription) sans connexion à la base de données pour le moment.
 - **Intégration de formulaires :**
@@ -39,7 +39,7 @@
 
 ---
 
-## 5. Design et Géolocalisation (Personne 5)
+## 5. Tests et Géolocalisation (Hugo)
 - **Maquettes de l'interface :**
   - Design des pages principales (maquettes visuelles pour validation).
 - **Implémentation du plan d'accès :**
@@ -48,8 +48,3 @@
   - Création d'une version statique ou avec des données simulées pour l'affichage du plan.
 
 ---
-
-## Indépendance et Coordination
-- **Communication entre membres :** Utilisez des données statiques ou des "mock" pour les tâches qui nécessitent des éléments non encore développés par un autre membre.
-- **Validation croisée :** Une fois une tâche terminée, validez son intégration avec les autres composants.
-- **Trello :** Créez des **cartes indépendantes** pour chaque fonctionnalité ou composant, et marquez les tâches critiques à valider pour réduire les dépendances.
