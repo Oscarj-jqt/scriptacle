@@ -1,4 +1,4 @@
-# Répartition des Tâches - Projet Annuaire de Spectacles Parisiens
+# Projet SQL - PHP - Annuaire de Spectacles Parisiens
 
 ## 1. Base de Données (Oscar)
 - **Conception initiale de la base de données :**
