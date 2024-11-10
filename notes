@@ -1,3 +1,91 @@
 Introduction 
 
 Le projet consiste à reproduire une partie d'un annuaire des spectab
+
+
+Exemple d'insertion dans la table participant avec idSpectacle :
+Une fois la relation établie, tu pourras ajouter des participants à des spectacles en utilisant l'ID du spectacle auquel ils appartiennent. Par exemple :
+
+
+INSERT INTO participant (nom, genre, fonction, idSpectacle)
+VALUES ('John Doe', 'Rock', 'Guitariste', 1);
+
+
+Début avec 6 éléments
+1-
+titre : Spectaculaire
+information : Le Cirque d'Hiver Bouglione est de retour avec un show féérique ! Découvrez des artistes exceptionnels : Régina Bouglione, David-Pierre Larible, le Duo Sweet Darkness, les Flying Tabares et bien d'autres pour un moment inoubliable en famille.
+categorie : Cirque
+CIRQUE D'HIVER, Paris 75011
+idLieu : 
+duree : 2 heures
+disponibilite : Du 10/11/2024 au 09/03/2025
+age : Tout public
+
+source : https://www.ticketac.com/spectacles/cirque-bouglione.htm
+image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp
+
+2- 
+titre : Casse-Noisette
+information : Le ballet Casse-Noisette raconte l'histoire de Clara, qui reçoit un casse-noisette et plonge dans un rêve où elle affronte rats et soldats de plomb. Présenté pour la première fois en 1892, ce spectacle du Palais des Congrès offre une magie intemporelle pour tous.
+categorie : Ballet, Danse
+Palais des Congrès de Paris, Paris 17e
+idLieu : 
+duree : 2h10
+disponibilite : Du 7/01/2025 au 12/01/2025
+age : Tout public
+
+source : https://www.offi.fr/theatre/palais-des-congres-2908/casse-noisette-35436.html#onglet-infos
+image : https://files.offi.fr/programmation/2429813/images/200/cd6e544330a4b92dc40de2fca043bb78.jpg
+
+3- 
+titre : Ensemble Royal de Paris
+information : Venez vivre un voyage musical exceptionnel avec l'Ensemble Royal de Paris à l'Église Saint-Julien-le-Pauvre. Découvrez des chefs-d'œuvre de Vivaldi, Mozart, Schubert, Bach, Händel et Saint-Saëns, interprétés par des solistes talentueux, dont la soprano Andreea Carmen Marin et le violoniste Dorian Rambaud. Un moment magique dans un cadre historique.
+categorie : Concert
+Eglise Saint-Julien Le Pauvre, Paris 75005
+idLieu : 
+duree : 1 heure 05 minutes
+disponibilite : Du 11/11/2024 au 30/08/2025
+age : A partir de 2 ans
+
+source : https://www.ticketac.com/spectacles/ensemble-royal-de-paris-35520
+image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/10/ensemble_royal_de_paris_1728894128.jpg.webp
+
+4-
+titre : Edmond
+information : Edmond, la pièce à succès d'Alexis Michalik, raconte la naissance tumultueuse de Cyrano de Bergerac. Avec ses 12 comédiens, cette œuvre primée aux Molières en 2017 pour 7 nominations, offre un théâtre de troupe dynamique. Michalik, auteur et metteur en scène talentueux, plonge le public dans un univers unique.
+categorie : Théâtre
+Théâtre du Palais Royal, Paris 75001
+idLieu : 
+duree : 1 heure 50 minutes
+disponibilite : Du 10/11/2024 au 30/03/2025
+age : A partir de 10 ans
+
+source : https://www.ticketac.com/spectacles/edmond-d-alexis-michalik.htm
+image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/03/edmond_1709915408.jpg.webp
+
+5-
+titre : Sur les traces d'Arsène Lupin - Entre magie et mentalisme
+information : Sur les traces d'Arsène Lupin - Entre magie et mentalisme, un spectacle interactif de Jean-Michel Lupin, vous plonge dans l'univers du célèbre gentleman cambrioleur. Avec magie, mentalisme et prédictions, découvrez un voyage captivant où l'esprit et les pensées deviennent le véritable trésor. Un succès du Festival Off d'Avignon 2021, à ne pas manquer !
+categorie : Magie
+Laurette Théâtre Paris, Paris 75010
+idLieu : 
+duree : 1 heure 15 minutes
+disponibilite : Du 10/11/2024 au 15/12/2024
+age : Tout public
+
+source : https://www.ticketac.com/spectacles/sur-les-traces-darsene-lupin-31648
+image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2022/07/surlestracesdarsenelupintheatrelyon_1658329341.png.webp
+
+6-
+titre : Black Legends
+information : Black Legends, le spectacle musical à succès, revient à Bobino dès le 14 novembre 2024 ! Avec 37 tableaux mythiques retraçant un siècle de musique afro-américaine, de Nina Simone à Prince, ce spectacle vibrant rend hommage aux légendes de la soul, gospel, jazz, et plus encore. Neuf chanteurs, sept danseurs et six musiciens célèbrent l'héritage musical afro-américain avec énergie et passion.
+categorie : Spectacle musical
+Bobino, Paris 75014
+idLieu : 
+duree : 1 heure 45 minutes
+disponibilite : Du 14/11/2024 au 02/03/2025
+age : A partir de 4 ans
+
+source : https://www.ticketac.com/spectacles/21415-the-black-legends.htm
+image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/04/blacklegendsbobino_01_1714379785.jpg.webp
