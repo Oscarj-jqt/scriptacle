@@ -16,8 +16,9 @@ Début avec 6 éléments
 titre : Spectaculaire
 information : Le Cirque d'Hiver Bouglione est de retour avec un show féérique ! Découvrez des artistes exceptionnels : Régina Bouglione, David-Pierre Larible, le Duo Sweet Darkness, les Flying Tabares et bien d'autres pour un moment inoubliable en famille.
 categorie : Cirque
-CIRQUE D'HIVER, Paris 75011
-idLieu : 
+CIRQUE D'HIVER, 
+110 Rue Amelot, Paris 75011
+idLieu : 1 (cirque d'hiver)
 duree : 2 heures
 disponibilite : Du 10/11/2024 au 09/03/2025
 age : Tout public
@@ -29,9 +30,10 @@ image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectacul
 titre : Casse-Noisette
 information : Le ballet Casse-Noisette raconte l'histoire de Clara, qui reçoit un casse-noisette et plonge dans un rêve où elle affronte rats et soldats de plomb. Présenté pour la première fois en 1892, ce spectacle du Palais des Congrès offre une magie intemporelle pour tous.
 categorie : Ballet, Danse
-Palais des Congrès de Paris, Paris 17e
-idLieu : 
-duree : 2h10
+Le Palais des Congrès de Paris
+2 Place de la Porte Maillot, Paris 75017
+idLieu : 2 (palais congrès)
+duree : 2 heures 10 minutes
 disponibilite : Du 7/01/2025 au 12/01/2025
 age : Tout public
 
@@ -42,8 +44,9 @@ image : https://files.offi.fr/programmation/2429813/images/200/cd6e544330a4b92dc
 titre : Ensemble Royal de Paris
 information : Venez vivre un voyage musical exceptionnel avec l'Ensemble Royal de Paris à l'Église Saint-Julien-le-Pauvre. Découvrez des chefs-d'œuvre de Vivaldi, Mozart, Schubert, Bach, Händel et Saint-Saëns, interprétés par des solistes talentueux, dont la soprano Andreea Carmen Marin et le violoniste Dorian Rambaud. Un moment magique dans un cadre historique.
 categorie : Concert
-Eglise Saint-Julien Le Pauvre, Paris 75005
-idLieu : 
+Eglise Saint-Julien Le Pauvre
+1 Rue Saint-Julien le Pauvre, Paris 75005
+idLieu : 4 (église saint-julien)
 duree : 1 heure 05 minutes
 disponibilite : Du 11/11/2024 au 30/08/2025
 age : A partir de 2 ans
@@ -55,8 +58,9 @@ image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/10/ensemble_
 titre : Edmond
 information : Edmond, la pièce à succès d'Alexis Michalik, raconte la naissance tumultueuse de Cyrano de Bergerac. Avec ses 12 comédiens, cette œuvre primée aux Molières en 2017 pour 7 nominations, offre un théâtre de troupe dynamique. Michalik, auteur et metteur en scène talentueux, plonge le public dans un univers unique.
 categorie : Théâtre
-Théâtre du Palais Royal, Paris 75001
-idLieu : 
+Théâtre du Palais Royal
+38 Rue de Montpensier, Paris 75001
+idLieu : 5 (théâtre palais royal)
 duree : 1 heure 50 minutes
 disponibilite : Du 10/11/2024 au 30/03/2025
 age : A partir de 10 ans
@@ -68,8 +72,9 @@ image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/03/edmond_17
 titre : Sur les traces d'Arsène Lupin - Entre magie et mentalisme
 information : Sur les traces d'Arsène Lupin - Entre magie et mentalisme, un spectacle interactif de Jean-Michel Lupin, vous plonge dans l'univers du célèbre gentleman cambrioleur. Avec magie, mentalisme et prédictions, découvrez un voyage captivant où l'esprit et les pensées deviennent le véritable trésor. Un succès du Festival Off d'Avignon 2021, à ne pas manquer !
 categorie : Magie
-Laurette Théâtre Paris, Paris 75010
-idLieu : 
+Laurette Théâtre Paris
+36 Rue Bichat, Paris 75010
+idLieu : 6 (laurette)
 duree : 1 heure 15 minutes
 disponibilite : Du 10/11/2024 au 15/12/2024
 age : Tout public
@@ -81,11 +86,18 @@ image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2022/07/surlestra
 titre : Black Legends
 information : Black Legends, le spectacle musical à succès, revient à Bobino dès le 14 novembre 2024 ! Avec 37 tableaux mythiques retraçant un siècle de musique afro-américaine, de Nina Simone à Prince, ce spectacle vibrant rend hommage aux légendes de la soul, gospel, jazz, et plus encore. Neuf chanteurs, sept danseurs et six musiciens célèbrent l'héritage musical afro-américain avec énergie et passion.
 categorie : Spectacle musical
-Bobino, Paris 75014
-idLieu : 
+Bobino
+20 Rue de la Gaité, Paris 75014
+idLieu : 3 (bobino)
 duree : 1 heure 45 minutes
 disponibilite : Du 14/11/2024 au 02/03/2025
 age : A partir de 4 ans
 
 source : https://www.ticketac.com/spectacles/21415-the-black-legends.htm
 image : https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/04/blacklegendsbobino_01_1714379785.jpg.webp
+
+
+Insérer les données dans les tables parents en premier : 
+Lieu, Spectacle et Utilisateur
+Ensuite insérer dans les tables : 
+Avis (utilisateur, spectacle), Representation (utilisateur et lieu) et Participant (spectacle)
