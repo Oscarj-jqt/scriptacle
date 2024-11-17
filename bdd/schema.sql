@@ -48,5 +48,14 @@
 
 
 
--- representation et salle à faire 
+-- representation :
+-- CREATE TABLE `representation` (
+--   `idRepresentation` int NOT NULL AUTO_INCREMENT,
+--   `dateHeure` datetime NOT NULL,
+--   `prix` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+--   `idUtilisateur` int DEFAULT NULL,
+--   `idLieu` int NOT NULL,
+--   PRIMARY KEY (`idRepresentation`),
+--   KEY `idUtilisateur` (`idUtilisateur`),
+--   KEY `fk_idLieu` (`idLieu`);
 
