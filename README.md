@@ -1,6 +1,6 @@
 # Répartition des Tâches - Projet Annuaire de Spectacles Parisiens
 
-## 1. Base de Données (finie) et API(Oscar)
+## 1. Base de Données et API(Oscar)
 - **Conception initiale de la base de données
 - **Création des scripts SQL
 - **Scripts de test
