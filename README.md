@@ -7,9 +7,14 @@
   - Scripts de base pour insérer, mettre à jour et supprimer des lieux et des salles indépendamment des autres tables.
 - **Scripts de test :**
   - Génération de données de test de manière autonome.
+## 1. Base de Données et API(Oscar)
+- **Conception initiale de la base de données
+- **Création des scripts SQL
+- **Scripts de test
+
 ---
 
-## 2. Backend Utilisateurs (Personne 2)
+## 2. Backend Utilisateurs (Baptiste)
 - **Gestion des utilisateurs :**
   - Inscription, connexion et déconnexion des utilisateurs.
 - **Fonctionnalités liées aux utilisateurs :**
@@ -24,7 +29,7 @@
   - Gestion des réservations pour des représentations
 ---
 
-## 4. Frontend (Personne 4)
+## 4. Frontend (Hugo)
 - **Pages statiques HTML/CSS :**
   - Création des pages principales (page d'accueil, page de liste de spectacles, page d'inscription) sans connexion à la base de données pour le moment.
 - **Intégration de formulaires :**
