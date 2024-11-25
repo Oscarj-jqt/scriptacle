@@ -38,8 +38,3 @@
   - Conception du thème général et des styles de base.
 
 ---
-
-## Indépendance et Coordination
-- **Communication entre membres :** Utilisez des données statiques ou des "mock" pour les tâches qui nécessitent des éléments non encore développés par un autre membre.
-- **Validation croisée :** Une fois une tâche terminée, validez son intégration avec les autres composants.
-- **Trello :** Créez des **cartes indépendantes** pour chaque fonctionnalité ou composant, et marquez les tâches critiques à valider pour réduire les dépendances.
