@@ -39,14 +39,6 @@
 
 ---
 
-## 5. Design et Géolocalisation (Personne 5)
-- **Maquettes de l'interface :**
-  - Design des pages principales (maquettes visuelles pour validation).
-- **Implémentation du plan d'accès :**
-  - Intégration de l'API de géolocalisation simple (Google Maps ou autre) pour afficher un lieu avec des données simulées.
-
----
-
 ## Indépendance et Coordination
 - **Communication entre membres :** Utilisez des données statiques ou des "mock" pour les tâches qui nécessitent des éléments non encore développés par un autre membre.
 - **Validation croisée :** Une fois une tâche terminée, validez son intégration avec les autres composants.
