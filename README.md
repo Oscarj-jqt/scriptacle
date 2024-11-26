@@ -16,7 +16,7 @@
 
 ---
 
-## 3. Backend Spectacles et Réservations (Alexis)
+## 3. Backend Spectacles et Réservations (Aryles et Hugo)
 - **Gestion des spectacles :**
   - CRUD pour les spectacles, avec gestion des représentations (en utilisant des données simulées si la base n'est pas encore finalisée).
 - **Réservation :**
@@ -26,7 +26,7 @@
 
 ---
 
-## 4. Frontend (Hugo)
+## 4. Frontend (Alexis)
 - **Pages statiques HTML/CSS :**
   - Création des pages principales (page d'accueil, page de liste de spectacles, page d'inscription) sans connexion à la base de données pour le moment.
 - **Styles CSS :**
