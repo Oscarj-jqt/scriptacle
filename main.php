@@ -1,5 +1,5 @@
 <?php
-/* session_start();
+session_start();
 require 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
@@ -19,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 }
 
 // Récupérer les spectacles
-$stmt = $pdo->query("SELECT * FROM spectacle");
+$stmt = $pdo->query("SELECT * FROM spectacles_parisiens");
 $spectacles = $stmt->fetchAll();
-*/
+
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +39,7 @@ $spectacles = $stmt->fetchAll();
         <?php foreach ($spectacles as $spectacle): ?>
             <li>
                 <h3><?php echo htmlspecialchars($spectacle['title']); ?></h3>
-                <p><?php echo htmlspecialchars($spectacle['summary']); ?></p>
-                <p>Langue : <?php echo htmlspecialchars($spectacle['language']); ?></p>
+
             </li>
         <?php endforeach; ?>
     </ul>
