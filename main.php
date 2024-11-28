@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 }
 
 // Récupérer les spectacles
-$stmt = $pdo->query("SELECT * FROM spectacles_parisiens");
+$stmt = $db->query("SELECT * FROM spectacle");
 $spectacles = $stmt->fetchAll();
 
 ?>
