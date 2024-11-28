@@ -1,5 +1,5 @@
 <?php
-/* session_start();
+session_start();
 require 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
@@ -19,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 }
 
 // Récupérer les spectacles
-$stmt = $pdo->query("SELECT * FROM spectacle");
+$stmt = $pdo->query("SELECT * FROM Spectacle");
 $spectacles = $stmt->fetchAll();
-*/
+
 ?>
 
 <!DOCTYPE html>
