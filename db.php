@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$db = 'annuaire_spectacles';
-$user = 'your_username';
-$pass = 'your_password';
+/* $host = 'localhost';
+$db = 'spectacles_parisiens';
+$user = 'root';
+$pass = 'root';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -17,4 +17,25 @@ try {
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
+*/
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$user = 'root';
+$pass = '';
+$dsn = 'mysql:host=localhost;dbname=Spectacle';
+
+try {
+    $db = new PDO($dsn, $user, $pass);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connection successful!";
+} catch (PDOException $e) {
+    echo 'Connection failed: ' . $e->getMessage();
+}
+
+
 ?>
+

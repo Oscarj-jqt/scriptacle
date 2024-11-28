@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `spectacle_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `spectacle_id` (`spectacle_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `artist`
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `name` varchar(255) NOT NULL,
   `helpText` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `category`
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `reaction` (
   PRIMARY KEY (`id`),
   KEY `subscriber_id` (`subscriber_id`),
   KEY `comment_id` (`comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `representation` (
   PRIMARY KEY (`id`),
   KEY `spectacle_id` (`spectacle_id`),
   KEY `room_id` (`room_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `representation`
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `spectacle_id` int NOT NULL,
   PRIMARY KEY (`artist_id`,`spectacle_id`),
   KEY `fk_spectacle_role` (`spectacle_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `role`
@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   `theater_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_theater_room` (`theater_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `room`
@@ -271,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   PRIMARY KEY (`date`,`subscriber_id`,`spectacle_id`),
   KEY `fk_spectacle_schedule` (`spectacle_id`),
   KEY `fk_subscriber_schedule` (`subscriber_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `schedule`
@@ -289,15 +289,15 @@ INSERT INTO `schedule` (`date`, `booked`, `paid`, `amount`, `comment`, `notation
 DROP TABLE IF EXISTS `spectacle`;
 CREATE TABLE IF NOT EXISTS `spectacle` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `synopsis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `title` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `synopsis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `duration` time DEFAULT NULL,
   `price` float DEFAULT NULL,
   `language` enum('Français','Anglais','Espagnol','Allemand','Italien') DEFAULT 'Français',
   `category_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `spectacle`
@@ -327,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `subscriber` (
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `subscriber`
@@ -353,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `theatre` (
   `phone` varchar(50) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `theatre`
