@@ -1,3 +1,29 @@
+<?php
+session_start();
+require 'db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
+    switch ($_POST['action']) {
+        case 'register':
+            // Registration logic...
+            break;
+
+        case 'login':
+            // Login logic...
+            break;
+
+        case 'create_spectacle':
+            // Create spectacle logic...
+            break;
+    }
+}
+
+// Récupérer les spectacles
+$stmt = $pdo->query("SELECT * FROM spectacles_parisiens");
+$spectacles = $stmt->fetchAll();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +61,7 @@
   <div class="flex flex-wrap justify-between gap-6  m-6">
     <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
       <img src="https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp" alt="Spectaculaire" class="h-[200px] w-full object-cover rounded-lg !important">
-      <h1 class="text-center text-lg font-semibold text-gray-900">Spectaculaire</h1>
+      <h1 class="text-center text-lg font-semibold text-gray-900"><?php echo htmlspecialchars($spectacle['title']); ?></h1>
       <div class="p-4">
         <div class="flex justify-center items-center">
           <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
