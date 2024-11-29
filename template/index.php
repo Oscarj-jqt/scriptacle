@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db.php';
+require '../db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     switch ($_POST['action']) {
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 }
 
 // Récupérer les spectacles
-$stmt = $pdo->query("SELECT * FROM spectacles_parisiens");
+$stmt = $db->query("SELECT * FROM spectacles_parisiens");
 $spectacles = $stmt->fetchAll();
 
 ?>

@@ -1,15 +1,13 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : lun. 18 nov. 2024 à 16:28
--- Version du serveur : 8.2.0
--- Version de PHP : 8.2.13
+-- Création de la base de données avec le bon jeu de caractères
+CREATE DATABASE spectacles_parisiens CHARACTER SET = "utf8mb4" COLLATE = "utf8mb4_general_ci";
+
+-- Sélectionner la base de données
+USE spectacles_parisiens;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+SET NAMES utf8mb4;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
