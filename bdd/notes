@@ -1,0 +1,8 @@
+ajouter 
+
+
+CREATE DATABASE IF NOT EXIST spectacles_parisiens;
+
+et use ?
+
+au début du fichier sql pour la bdd
