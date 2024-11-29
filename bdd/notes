@@ -1,7 +1,12 @@
 ajouter 
 
 
-CREATE DATABASE IF NOT EXIST spectacles_parisiens;
+CREATE DATABASE 
+spectacles_parisiens CHARACTER SET = 'utf8mb4' COLLATE 'utf8mb4_general_ci';
+
+USE spectacles_parisiens;
+
+donner à GPT
 
 et use ?
 
