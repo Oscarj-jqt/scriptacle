@@ -7,12 +7,6 @@
   - Scripts de base pour insérer, mettre à jour et supprimer des lieux et des salles indépendamment des autres tables.
 - **Scripts de test :**
   - Génération de données de test de manière autonome.
-## 1. Base de Données et API(Oscar)
-- **Conception initiale de la base de données
-- **Création des scripts SQL
-- **Scripts de test
-
----
 
 ## 2. Backend Utilisateurs (Baptiste)
 - **Gestion des utilisateurs :**
