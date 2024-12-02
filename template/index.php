@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 }
 
 // Récupérer les spectacles
-$stmt = $pdo->query("SELECT * FROM spectacles_parisiens");
+$stmt = $db->query("SELECT * FROM spectacles_parisiens");
 $spectacles = $stmt->fetchAll();
 
 ?>
@@ -34,6 +34,7 @@ $spectacles = $stmt->fetchAll();
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+ <?php foreach ($spectacles as $spectacle): ?>
   <header>
     <nav class="flex items-center justify-between p-4 relative">
       <div class="flex items-center gap-10 ">
@@ -143,6 +144,6 @@ $spectacles = $stmt->fetchAll();
       </div>
     </div>
   </div> 
-  
+  <?php endforeach; ?>
 </body>
 </html>
