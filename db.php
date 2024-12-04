@@ -26,12 +26,12 @@ error_reporting(E_ALL);
 
 $user = 'root';
 $pass = '';
-$dsn = 'mysql:host=localhost;dbname=Spectacle';
+$dsn = 'mysql:host=localhost;dbname=spectacles_parisiens';
 
 try {
     $db = new PDO($dsn, $user, $pass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connection successful!";
+    echo "";
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();
 }

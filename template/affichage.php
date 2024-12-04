@@ -1,3 +1,33 @@
+<?php
+session_start();
+require '../db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
+    switch ($_POST['action']) {
+        case 'register':
+            // Registration logic...
+            break;
+
+        case 'login':
+            // Login logic...
+            break;
+
+        case 'create_spectacle':
+            // Create spectacle logic...
+            break;
+    }
+}
+
+// Récupérer les spectacles
+// $stmt = $db->query("SELECT * FROM spectacles_parisiens");
+$stmt = $db->query("
+    SELECT sp.*, c.name AS category_name
+    FROM spectacles_parisiens sp
+    LEFT JOIN category c ON sp.category_id = c.id
+");
+$spectacles = $stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +80,9 @@
                 <div class="flex items-center justify-between gap-4 p-4 rounded-lg border-2 border-gray-200">
                   <div class="text-center p-2">
                     <p>Début Spectacle</p>
-                    <p>20:40</p>
+                    <p>
+                    <?php echo htmlspecialchars($spectacles['first_date']); ?>
+                    </p>
                   </div>
                   <div class="text-center p-2 ">
                     <p>Fin Spectacle</p>
