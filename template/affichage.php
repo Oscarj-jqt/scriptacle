@@ -19,13 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 }
 
 // Récupérer les spectacles
-// $stmt = $db->query("SELECT * FROM spectacles_parisiens");
-$stmt = $db->query("
-    SELECT sp.*, c.name AS category_name
-    FROM spectacles_parisiens sp
-    LEFT JOIN category c ON sp.category_id = c.id
-");
-$spectacles = $stmt->fetchAll();
+$stmt = $db->query("SELECT * FROM spectacles_parisiens LIMIT 1");
+$spectacles = $stmt->fetch();
+
+$date = $db->query("SELECT * FROM representation ");
+$mydate = $date->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +41,7 @@ $spectacles = $stmt->fetchAll();
     <header>
         <nav class="flex items-center justify-between p-4">
           <div class="flex items-center gap-10 ">
-            <a href="index.html" class="text-xl font-bold text-black">Scriptacle</a>
+            <a href="index.php" class="text-xl font-bold text-black">Scriptacle</a>
             <a href="#" class="font-semibold hover:underline">Catégorie</a>
             <a href="#" class="font-semibold hover:underline">Spectacle</a>
             <a href="#" class="font-semibold hover:underline">Salle</a>
@@ -65,7 +63,9 @@ $spectacles = $stmt->fetchAll();
       </header>
       <div class="flex  justify-center gap-6 m-6">
         <div class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6 ">
-          <h1 class="border-gray-200 border-b-2 text-xl inline-block pb-2">Titre du spectacle</h1>
+          <h1 class="border-gray-200 border-b-2 text-xl inline-block pb-2">
+            <?php echo htmlspecialchars($spectacle['title']); ?>"
+          </h1>
             <div class="flex justify-center m-6">
               <div class="p-6 space-y-4 max-w-lg">
                 <p>Nombre de réservation :</p>  
@@ -81,7 +81,15 @@ $spectacles = $stmt->fetchAll();
                   <div class="text-center p-2">
                     <p>Début Spectacle</p>
                     <p>
-                    <?php echo htmlspecialchars($spectacles['first_date']); ?>
+                    <?php 
+                                    // Vérifiez si 'first_date' est défini avant de formater la date
+                                    if (isset($representation['first_date'])) {
+                                        $first_date = new DateTime($representation['first_date']);
+                                        echo $first_date->format('d-m-Y H:i'); 
+                                    } else {
+                                        echo "Date non définie";
+                                    }
+                                ?>
                     </p>
                   </div>
                   <div class="text-center p-2 ">

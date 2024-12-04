@@ -84,7 +84,7 @@ $spectacles = $stmt->fetchAll();
           ?>
         </p>
         <div class="mt-4 flex justify-center">
-          <a href="affichage.html" class="text-sm font-semibold hover:underline">Afficher</a>
+          <a href="affichage.php" class="text-sm font-semibold hover:underline">Afficher</a>
         </div>
       </div>
     </div>
