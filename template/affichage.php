@@ -18,13 +18,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     }
 }
 
-// Récupérer les spectacles
-$stmt = $db->query("SELECT * FROM spectacles_parisiens LIMIT 1");
-$spectacles = $stmt->fetch();
+$spectacle_id = isset($_GET['id']) ? $_GET['id'] : null;
 
+if ($spectacle_id) {
+  // Requête pour récupérer les détails du spectacle et ses avis associés
+  $stmt = $db->prepare("SELECT sp.*, a.commentaire AS avis_content, a.note AS avis_rating 
+      FROM spectacles_parisiens sp
+      LEFT JOIN avis a ON sp.id = a.idSpectacle
+      WHERE sp.id = :id
+  ");
+  $stmt->execute(['id' => $spectacle_id]);
+  $spectacle_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  // Vérifiez si un spectacle a été trouvé
+  if ($spectacle_data) {
+      // Récupérer les détails du spectacle
+      $title = htmlspecialchars($spectacle_data[0]['title']);
+      $description = htmlspecialchars($spectacle_data[0]['synopsis']);
+      // Vous pouvez également récupérer d'autres informations comme le genre, les horaires, etc.
+  } else {
+      echo "Spectacle non trouvé.";
+  }
+} else {
+  echo "Aucun ID spécifié.";
+}
+
+?>
+
+<!-- // // Récupérer les spectacles
+// $stmt = $db->query("SELECT * FROM spectacles_parisiens LIMIT 1"); 
+// $spectacle = $stmt->fetch(); // fetch() renvoie une seule ligne ou false
+
+// // Vérifiez si la variable $spectacle est définie et contient des données
+// if ($spectacle === false) {
+//     echo "Aucun spectacle trouvé.";
+//     exit; // On arrête l'exécution du script si aucun résultat n'est trouvé
+// } -->
+<!-- 
 $date = $db->query("SELECT * FROM representation ");
 $mydate = $date->fetchAll();
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,16 +97,20 @@ $mydate = $date->fetchAll();
       <div class="flex  justify-center gap-6 m-6">
         <div class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6 ">
           <h1 class="border-gray-200 border-b-2 text-xl inline-block pb-2">
-            <?php echo htmlspecialchars($spectacle['title']); ?>"
+            <?php echo htmlspecialchars($spectacle['title']); ?> 
           </h1>
             <div class="flex justify-center m-6">
               <div class="p-6 space-y-4 max-w-lg">
                 <p>Nombre de réservation :</p>  
                 <p class="">Description :</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, sint officiis. Deserunt, quibusdam facilis alias ipsa placeat maiores et tempore suscipit odit iusto sed eos optio possimus at omnis vel.</p>
+                <p>
+                <?php echo htmlspecialchars($spectacle['synopsis']); ?> 
+                </p>
                 <p>Note :</p>
                 <p>Commentaire :</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum est suscipit dolorum eligendi. Atque vitae aut enim suscipit error possimus ex dolorem, repellat nostrum, quam, labore repellendus vel. Laudantium, ducimus?s</p>
+                <p>
+                <?php echo htmlspecialchars($spectacle_avis['avis_content']); ?> 
+                </p>
               </div>
               <div class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col p-6 space-y-4">
                 <h1 class="text-xl ">Page de réservation</h1>
