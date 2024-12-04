@@ -26,7 +26,7 @@ error_reporting(E_ALL);
 
 $user = 'root';
 $pass = '';
-$dsn = 'mysql:host=localhost;dbname=spectacles_parisiens';
+$dsn = 'mysql:host=localhost;dbname=Spectacle';
 
 try {
     $db = new PDO($dsn, $user, $pass);

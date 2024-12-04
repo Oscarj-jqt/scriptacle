@@ -76,7 +76,7 @@ $spectacles = $stmt->fetchAll();
 
     <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
       <img src="https://files.offi.fr/programmation/2429813/images/200/cd6e544330a4b92dc40de2fca043bb78.jpg" alt="Casse-Noisette" class="h-[200px] w-full object-cover rounded-lg ">
-      <h1 class="text-center text-lg font-semibold text-gray-900">Casse-Noisette</h1>
+      <h1 class="text-center text-lg font-semibold text-gray-900"><?php echo htmlspecialchars($spectacle['title']); ?></h1>
       <div class="p-4">
         <div class="flex justify-center items-center">
           <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
