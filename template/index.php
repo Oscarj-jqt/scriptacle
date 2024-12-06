@@ -35,7 +35,7 @@ $spectacles = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../output.css"> 
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./input.css">
 </head>
 <body>
 
@@ -43,11 +43,19 @@ $spectacles = $stmt->fetchAll();
     <nav class="flex items-center justify-between p-4 relative">
       <div class="flex items-center gap-10 ">
         <a href="index.html" class="text-xl font-bold text-black">Scriptacle</a>
-        <a href="#" class="font-semibold hover:underline cursor-pointer">Catégories</a>
-        <a href="#" class="font-semibold hover:underline">Spectacle</a>
-        <a href="#" class="font-semibold hover:underline">Salle</a>
-        <a href="#" class="font-semibold hover:underline">Artiste</a>
-        <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
+        <div class="relative">
+          <a href="#" class="font-semibold hover:underline cursor-pointer" id="toggleCategories">Catégories</a>
+            <ul id="categoriesMenu" class="absolute left-0 top-10 bg-white shadow-lg rounded-lg hidden z-10">
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="#">Catégorie 1</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="#">Catégorie 2</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="#">Catégorie 3</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="#">Catégorie 4</a></li>
+            </ul>
+        </div>
+          <a href="#" class="font-semibold hover:underline">Spectacle</a>
+          <a href="#" class="font-semibold hover:underline">Salle</a>
+          <a href="#" class="font-semibold hover:underline">Artiste</a>
+          <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
       </div>
     
       <div class="flex items-center gap-4">
@@ -92,4 +100,5 @@ $spectacles = $stmt->fetchAll();
 
 
 </body>
+<script src="index.js"></script>
 </html>
