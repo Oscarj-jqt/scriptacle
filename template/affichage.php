@@ -85,12 +85,21 @@ $mydate = $date->fetchAll();
               <li class="px-4 py-2 hover:bg-gray-100"><a href="category.php?category_id=4">Humour</a></li>
             </ul>
         </div>
-          <a href="#" class="font-semibold hover:underline">Spectacle</a>
+        <div class="relative">
+          <a href="#" class="font-semibold hover:underline" id="toggleArrondissement">Arrondissement</a>
+            <ul id="arrondissementMenu" class="absolute left-0 top-10 bg-white shadow-lg rounded-lg hidden z-10">
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=1">11ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=2">17ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=3">5ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">1ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">10ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">14ème</a></li>
+            </ul>
+          </div>
           <a href="#" class="font-semibold hover:underline">Salle</a>
           <a href="#" class="font-semibold hover:underline">Artiste</a>
           <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
       </div>
-    
       <div class="flex items-center gap-4">
         <input
           type="text"
@@ -101,8 +110,8 @@ $mydate = $date->fetchAll();
           Connexion
         </a>
     </nav>
-    <div class="border-t-2 border-gray-200 mt-2"></div>
-  </header>
+  <div class="border-t-2 border-gray-200 mt-2"></div>
+</header>
 
   <div class="flex  justify-center gap-6 m-6">
     <div class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6 ">

@@ -1,33 +1,29 @@
 <?php
-session_start();
 require '../db.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
-    switch ($_POST['action']) {
-        case 'register':
-            // Registration logic...
-            break;
-
-        case 'login':
-            // Login logic...
-            break;
-
-        case 'create_spectacle':
-            // Create spectacle logic...
-            break;
-    }
+if (!isset($_GET['arrondissement_id'])) {
+    die("Aucun arrondissement spécifié.");
 }
 
-// Récupérer les spectacles
-// $stmt = $db->query("SELECT * FROM spectacles_parisiens");
-$stmt = $db->query("SELECT sp.*, c.name AS category_name
-    FROM spectacles_parisiens sp
-    LEFT JOIN category c ON sp.category_id = c.id
-");
-$spectacles = $stmt->fetchAll();
+$arrondissementId = (int) $_GET['arrondissement_id'];
 
-$theatreStmt = $db->query("SELECT * FROM theatre ORDER BY borough ASC");
-$theatres = $theatreStmt->fetchAll();
+$arrondissementMap = [
+    1 => '75011', 
+    2 => '75017', 
+    3 => '75005', 
+    4 => '75001', 
+    5 => '75010', 
+    6 => '75014', 
+];
+
+if (!array_key_exists($arrondissementId, $arrondissementMap)) {
+    die("Arrondissement non trouvé.");
+}
+
+$borough = $arrondissementMap[$arrondissementId];
+$stmt = $db->prepare("SELECT * FROM theatre WHERE borough = :borough");
+$stmt->execute(['borough' => $borough]);
+$theatres = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -40,8 +36,7 @@ $theatres = $theatreStmt->fetchAll();
     <link rel="stylesheet" href="./input.css">
 </head>
 <body>
-
-  <header>
+<header>
     <nav class="flex items-center justify-between p-4 relative">
       <div class="flex items-center gap-10 ">
         <a href="index.php" class="text-xl font-bold text-black">Scriptacle</a>
@@ -69,7 +64,6 @@ $theatres = $theatreStmt->fetchAll();
           <a href="#" class="font-semibold hover:underline">Artiste</a>
           <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
       </div>
-    
       <div class="flex items-center gap-4">
         <input
           type="text"
@@ -82,35 +76,28 @@ $theatres = $theatreStmt->fetchAll();
     </nav>
     <div class="border-t-2 border-gray-200 mt-2"></div>
   </header>
-
-  <div class="flex flex-wrap justify-between gap-6  m-6">
-    <?php foreach ($spectacles as $spectacle): ?>
-    <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <img 
-        src="https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp" 
-        alt="<?php echo htmlspecialchars($spectacle['title']); ?>" 
-        class="h-[200px] w-full object-cover rounded-lg !important">
-      <h1 class="text-center text-lg font-semibold text-gray-900">
-        <?php echo htmlspecialchars($spectacle['title']); ?>
-      </h1>
-      <div class="p-4">
-        <div class="flex justify-center items-center">
-          <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
-        </div>
-        <p class="text-center text-gray-600 text-sm mt-2">
-         <?php 
-            $category = isset($spectacle['category_name']) ? htmlspecialchars($spectacle['category_name']) : 'Catégorie inconnue';
-            echo $category;
-          ?>
-        </p>
-        <div class="mt-4 flex justify-center">
-          <a href="affichage.php?id=<?php echo $spectacle['id']; ?>" class="text-sm font-semibold hover:underline">Afficher</a>
-        </div>
-      </div>
+  <main class="m-6">
+    <h1 class="text-2xl font-bold text-center mb-6">
+        Théâtres de l’arrondissement <?php echo (int)substr($borough, -2); ?>ème
+    </h1>
+    <div class="flex items-center justify-center gap-6">
+        <?php if (count($theatres) > 0): ?>
+            <?php foreach ($theatres as $theatre): ?>
+            <div class="w-[400px] bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
+                <img 
+                    src="https://via.placeholder.com/400x200?text=Théâtre" 
+                    alt="<?php echo htmlspecialchars($theatre['name']); ?>" 
+                    class="h-[200px] w-full object-cover rounded-lg">
+                <h1 class="text-center text-lg font-semibold text-gray-900 mt-4"><?php echo htmlspecialchars($theatre['name']); ?></h1>
+                <p class="text-gray-600 text-sm mt-2 text-justify"><?php echo htmlspecialchars($theatre['presentation']); ?></p>
+                <p class="text-center text-gray-500 text-sm mt-4">Arrondissement <?php echo (int)substr($borough, -2); ?>ème</p>
+            </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="text-center text-gray-600">Aucun théâtre trouvé dans cet arrondissement.</p>
+        <?php endif; ?>
     </div>
-    <?php endforeach; ?>
-
-
+</main>
 </body>
 <script src="index.js"></script>
 </html>
