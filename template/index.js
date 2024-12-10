@@ -27,3 +27,21 @@ document.addEventListener('click', (e) => {
         arrondissementMenu.style.display = 'none';
     }
 });
+
+
+toggleArtiste.addEventListener('click', (e)=> {
+    e.preventDefault;
+    if (artiste.style.display === 'none' || artiste.style.display === '') {
+        artiste.style.display = 'block';
+        toggleArtiste.textContent = 'Afficher moins';
+    } else {
+        artiste.style.display = 'none';
+        
+    }
+});
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('#toggleArtiste') && !e.target.closest('#artiste')) {
+        artiste.style.display = 'none';
+    }
+});

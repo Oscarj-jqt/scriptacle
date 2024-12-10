@@ -31,7 +31,6 @@ if ($spectacle_id) {
     $spectacle = $stmt->fetch();
 
     if ($spectacle) {
-        // Afficher le titre et d'autres informations
         $title = htmlspecialchars($spectacle['title']);
         $description = htmlspecialchars($spectacle['synopsis']);
         $stmt_avis = $db->prepare("SELECT commentaire FROM avis WHERE idSpectacle = :idSpectacle");
@@ -40,25 +39,14 @@ if ($spectacle_id) {
         $stmt_representation = $db->prepare("SELECT first_date, last_date FROM representation WHERE spectacle_id = :spectacle_id");
         $stmt_representation->execute(['spectacle_id' => $spectacle_id]);
         $representation = $stmt_representation->fetch();
+        $stmt_artistes = $db->prepare("SELECT * FROM artist WHERE spectacle_id = :spectacle_id");
+        $stmt_artistes->execute(['spectacle_id' => $spectacle_id]);
+        $artistes = $stmt_artistes->fetchAll();
     }
   }
 
 
 ?>
-
-<!-- // // Récupérer les spectacles
-// $stmt = $db->query("SELECT * FROM spectacles_parisiens LIMIT 1"); 
-// $spectacle = $stmt->fetch(); // fetch() renvoie une seule ligne ou false
-
-// // Vérifiez si la variable $spectacle est définie et contient des données
-// if ($spectacle === false) {
-//     echo "Aucun spectacle trouvé.";
-//     exit; // On arrête l'exécution du script si aucun résultat n'est trouvé
-// } -->
-<!-- 
-$date = $db->query("SELECT * FROM representation ");
-$mydate = $date->fetchAll();
-?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -167,6 +155,26 @@ $mydate = $date->fetchAll();
                 <p>Nombre de réservation :</p>
                 <p>En cours</p>
                 <button class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md">Reservation</button>
+              </div>
+            </div>
+            <div class="flex justify-center m-4">
+              <div class="flex flex-col items-center gap-4">
+                <button class="font-bold py-2 px-4 rounded-lg border-black border" id="toggleArtiste">Afficher plus</button>
+                <div id="artiste" class="hidden">
+                  <h1>Liste des artistes :</h1>
+                  <ul>
+                  <?php if (!empty($artistes)): ?>
+                    <?php foreach ($artistes as $artiste): ?>
+                        <li class="border-b py-2">
+                            <strong><?php echo htmlspecialchars($artiste['firstName'] . ' ' . $artiste['lastName']); ?></strong>
+                            <p class="text-sm text-gray-600"><?php echo htmlspecialchars($artiste['biography']); ?></p>
+                        </li>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                      <li>Aucun artiste trouvé pour ce spectacle.</li>
+                    <?php endif; ?>
+                  </ul>
+                </div>
               </div>
             </div>
             <div id="map" class="flex justify-center border-gray-200 border rounded-lg shadow-lg overflow-hidden h-[250px] w-full">
