@@ -96,7 +96,7 @@ $mydate = $date->fetchAll();
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">14ème</a></li>
             </ul>
           </div>
-          <a href="#" class="font-semibold hover:underline">Salle</a>
+          <a href="room.php" class="font-semibold hover:underline">Salle</a>
           <a href="#" class="font-semibold hover:underline">Artiste</a>
           <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
       </div>
