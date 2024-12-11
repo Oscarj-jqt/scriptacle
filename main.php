@@ -28,7 +28,7 @@ $spectacles = $stmt->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head
     <meta charset="UTF-8">
     <title>Annuaire de Spectacles</title>
 </head>
