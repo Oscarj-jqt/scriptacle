@@ -28,21 +28,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-toggleSort.addEventListener('click', (e)=> {
-    e.preventDefault;
-    if (sortMenu.style.display === 'none' || sortMenu.style.display === '') {
-        sortMenu.style.display = 'block';
-    } else {
-        sortMenu.style.display = 'none';
-    }
-});
-
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('#toggleSort') && !e.target.closest('#sortMenu')) {
-        sortMenu.style.display = 'none';
-    }
-});
-
 toggleArtiste.addEventListener('click', (e)=> {
     e.preventDefault;
     if (artiste.style.display === 'none' || artiste.style.display === '') {

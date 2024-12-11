@@ -2,7 +2,8 @@
     session_start();
     require '../db.php';
 
-    $stmt = $db->query("SELECT * FROM room");
+    $sortOrder = isset($_GET['sort']) && $_GET['sort'] === 'desc' ? 'DESC' : 'ASC';
+    $stmt = $db->query("SELECT * FROM room ORDER BY gauge $sortOrder");
     $room = $stmt->fetchAll();
 ?>
 
@@ -58,6 +59,13 @@
     <div class="border-t-2 border-gray-200 mt-2"></div>
   </header>
 <main>
+<div class="flex justify-end relative">
+  <button id="toggleSort" class="font-bold py-2 px-4 rounded-lg border-black border">Taux de remplissage</button>
+  <ul id="sortMenu" class="absolute top-full bg-white shadow-lg rounded-lg hidden z-10 mt-2">
+    <li class="px-4 py-2 hover:bg-gray-100"> <a href="?sort=asc">Croissant</a></li>
+    <li class="px-4 py-2 hover:bg-gray-100"> <a href="?sort=desc">Décroissant</a></li>
+  </ul>
+</div>
 <div class="flex flex-wrap justify-between gap-6  m-6">
     <?php foreach ($room as $room): ?>
     <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">

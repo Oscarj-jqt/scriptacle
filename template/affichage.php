@@ -184,5 +184,5 @@ if ($spectacle_id) {
       </div>
       <script src="../geolocation/script.js"></script>
 </body>
-<script src="index.js"></script>
+<script src="affichage.js"></script>
 </html>

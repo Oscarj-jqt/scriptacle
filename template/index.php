@@ -80,9 +80,8 @@ $theatres = $theatreStmt->fetchAll();
           Connexion
         </a>
     </nav>
-    <div class="border-t-2 border-gray-200 mt-2"></div>
+    <div class="border-t-2 border-gray-200 mt-4"></div>
   </header>
-
   <div class="flex flex-wrap justify-between gap-6  m-6">
     <?php foreach ($spectacles as $spectacle): ?>
     <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
