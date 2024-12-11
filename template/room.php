@@ -1,14 +1,23 @@
+<?php
+    session_start();
+    require '../db.php';
+
+    $sortOrder = isset($_GET['sort']) && $_GET['sort'] === 'desc' ? 'DESC' : 'ASC';
+    $stmt = $db->query("SELECT * FROM room ORDER BY gauge $sortOrder");
+    $room = $stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-    <link rel="stylesheet" href="./output.css"> 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="../output.css"> 
+    <link rel="stylesheet" href="./input.css">
 </head>
-<body >
-  <header>
+<body>
+<header>
     <nav class="flex items-center justify-between p-4 relative">
       <div class="flex items-center gap-10 ">
         <a href="index.php" class="text-xl font-bold text-black">Scriptacle</a>
@@ -49,32 +58,38 @@
     </nav>
     <div class="border-t-2 border-gray-200 mt-2"></div>
   </header>
-
-    <div class="bg-gray-100 flex justify-center">
-        <div class="bg-white rounded-lg shadow-lg p-8 box-border m-6">
-            <h2 class="text-3xl font-bold text-center mb-8 text-gray-700">Connexion</h2>
-            <form act ion="login.php" method="POST">
-                <div class="mb-6">
-                    <label for="email" class="block text-gray-700 text-lg">Email</label>
-                    <input type="email" name="email" id="email" 
-                       class="w-full px-6 py-4 text-lg border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <div class="mb-6">
-                    <label for="password" class="block text-gray-700 text-lg">Mot de passe</label>
-                    <input type="password" name="password" id="password" 
-                       class="w-full px-6 py-4 text-lg border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <button type="submit" 
-                    class="w-full bg-blue-500 text-white py-4 text-lg rounded-lg hover:bg-blue-600 transition">
-                    Connexion
-                </button>
-                <p class="text-sm text-gray-600 text-center mt-6">
-                    Pas encore inscrit ? <a href="register.php" class="text-blue-500 hover:underline">Créer un compte</a>
-                </p>
-        </form>
+<main>
+<div class="flex justify-end relative">
+  <button id="toggleSort" class="font-bold py-2 px-4 rounded-lg border-black border">Taux de remplissage</button>
+  <ul id="sortMenu" class="absolute top-full bg-white shadow-lg rounded-lg hidden z-10 mt-2">
+    <li class="px-4 py-2 hover:bg-gray-100"> <a href="?sort=asc">Croissant</a></li>
+    <li class="px-4 py-2 hover:bg-gray-100"> <a href="?sort=desc">Décroissant</a></li>
+  </ul>
+</div>
+<div class="flex flex-wrap justify-between gap-6  m-6">
+    <?php foreach ($room as $room): ?>
+    <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
+      <img 
+        src="https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp" 
+        alt="<?php echo htmlspecialchars($room['name']); ?>" 
+        class="h-[200px] w-full object-cover rounded-lg !important">
+      <h1 class="text-center text-lg font-semibold text-gray-900">
+        <?php echo htmlspecialchars($room['name']); ?>
+      </h1>
+      <div class="p-4">
+        <div class="flex justify-center items-center">
+          <h2 class="text-lg font-semibold text-gray-900">Nombre de spectateur</h2>
         </div>
+        <p class="text-center font-semibold text-gray-900 text-sm mt-2">
+            <?php echo htmlspecialchars($room['gauge']); ?>
+        </p>
+        <div class="mt-4 flex justify-center">
+          <a href="#" class="text-sm font-semibold hover:underline">Afficher</a>
+        </div>
+      </div>
     </div>
-    
+    <?php endforeach; ?>
+</main>
 </body>
 <script src="index.js"></script>
 </html>
