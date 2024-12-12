@@ -1,16 +1,15 @@
 <?php
-// Démarrer la session et inclure la base de données
+
 session_start();
 require '../db.php';
 
-// Vérifier si un ID de catégorie est passé dans l'URL
+
 if (!isset($_GET['category_id'])) {
     die("Aucune catégorie sélectionnée.");
 }
 
 $category_id = (int) $_GET['category_id'];
 
-// Récupérer la catégorie et les spectacles associés
 $stmt_category = $db->prepare("SELECT name FROM category WHERE id = :id");
 $stmt_category->execute(['id' => $category_id]);
 $category = $stmt_category->fetch();
@@ -26,6 +25,15 @@ $stmt_spectacles = $db->prepare("
 ");
 $stmt_spectacles->execute(['category_id' => $category_id]);
 $spectacles = $stmt_spectacles->fetchAll();
+$images = [
+  "Spectaculaire" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp",
+  "Casse-Noisette" => "https://files.offi.fr/programmation/2429813/images/200/cd6e544330a4b92dc40de2fca043bb78.jpg",
+  "Ensemble Royal de Paris" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/10/ensemble_royal_de_paris_1728894128.jpg.webp",
+  "Edmond" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/03/edmond_1709915408.jpg.webp",
+  "Sur les traces d'Arsène Lupin" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2022/07/surlestracesdarsenelupintheatrelyon_1658329341.png.webp",
+  "Black Legends" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/04/blacklegendsbobino_01_1714379785.jpg.webp",
+];
+
 ?>
 
 <!DOCTYPE html>
@@ -84,10 +92,10 @@ $spectacles = $stmt_spectacles->fetchAll();
         <?php if (count($spectacles) > 0): ?>
             <?php foreach ($spectacles as $spectacle): ?>
             <div class="w-[400px] bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-                <img 
-                    src="https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp" 
-                    alt="<?php echo htmlspecialchars($spectacle['title']); ?>" 
-                    class="h-[200px] w-full object-cover rounded-lg">
+            <?php 
+              $imageUrl = isset($images[$spectacle['title']]) ? $images[$spectacle['title']] : 'images/default.jpg';
+            ?>
+            <img src="<?php echo htmlspecialchars($imageUrl); ?>" alt="Spectacle Image" class="h-[200px] w-full object-cover rounded-lg !important">
                 <h1 class="text-center text-lg font-semibold text-gray-900"><?php echo htmlspecialchars($spectacle['title']); ?></h1>
                 <p class="text-center text-gray-600 text-sm mt-2"><?php echo htmlspecialchars($category['name']); ?></p>
                 <div class="mt-4 flex justify-center">
