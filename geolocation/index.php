@@ -9,12 +9,12 @@
 <body>
 
   <!-- Cartes pour chaque lieu -->
-  <div id="Cirque d'Hiver Bouglione" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
-  <div id="Le Palais des Congrès" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
-  <div id="Église Saint-Julien le Pauvre" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
-  <div id="Théâtre du Palais Royal" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
-  <div id="Laurette Théâtre" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
-  <div id="Bobino" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
+  <div id="Cirque d'Hiver Bouglione" style="height: 500px; width: 100%; margin-bottom: 20px;"></div>
+  <div id="Le Palais des Congrès" style="height: 500px; width: 100%; margin-bottom: 20px;"></div>
+  <div id="Église Saint-Julien le Pauvre" style="height: 500px; width: 100%; margin-bottom: 20px;"></div>
+  <div id="Théâtre du Palais Royal" style="height: 500px; width: 100%; margin-bottom: 20px;"></div>
+  <div id="Laurette Théâtre" style="height: 500px; width: 100%; margin-bottom: 20px;"></div>
+  <div id="Bobino" style="height: 500px; width: 100%; margin-bottom: 20px;"></div>
 
   <?php
   // Connexion à la base de donnée

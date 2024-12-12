@@ -18,7 +18,7 @@ $spectacle_id = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($spectacle_id) {
     require '../db.php';
-    $stmt = $db->prepare("SELECT * FROM spectacles_parisiens WHERE id = :id");
+    $stmt = $db->prepare("SELECT title, synopsis FROM spectacle WHERE id = :id");
     $stmt->execute(['id' => $spectacle_id]);
     $spectacle = $stmt->fetch();
 
