@@ -57,13 +57,13 @@ $spectacles = $stmt_spectacles->fetchAll();
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=2">17ème</a></li>
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=3">5ème</a></li>
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">1ème</a></li>
-              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">10ème</a></li>
-              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">14ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=5">10ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=6">14ème</a></li>
             </ul>
           </div>
           <a href="room.php" class="font-semibold hover:underline">Salle</a>
-          <a href="#" class="font-semibold hover:underline">Artiste</a>
-          <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
+          <a href="artiste.php" class="font-semibold hover:underline">Artiste</a>
+          <a href="theatre.php" class="font-semibold hover:underline">Les mieux notés</a>
       </div>
       <div class="flex items-center gap-4">
         <input

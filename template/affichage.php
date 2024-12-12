@@ -5,16 +5,11 @@ require '../db.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'register':
-            // Registration logic...
-            break;
-
+          break;
         case 'login':
-            // Login logic...
-            break;
-
+          break;
         case 'create_spectacle':
-            // Create spectacle logic...
-            break;
+          break;
     }
 }
 
@@ -22,10 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 $spectacle_id = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($spectacle_id) {
-    // Connexion à la base de données (ou déjà fait)
     require '../db.php';
-    
-    // Récupérer les détails du spectacle spécifique
     $stmt = $db->prepare("SELECT * FROM spectacles_parisiens WHERE id = :id");
     $stmt->execute(['id' => $spectacle_id]);
     $spectacle = $stmt->fetch();
@@ -33,15 +25,26 @@ if ($spectacle_id) {
     if ($spectacle) {
         $title = htmlspecialchars($spectacle['title']);
         $description = htmlspecialchars($spectacle['synopsis']);
+
         $stmt_avis = $db->prepare("SELECT commentaire FROM avis WHERE idSpectacle = :idSpectacle");
         $stmt_avis->execute(['idSpectacle' => $spectacle_id]);
         $avis = $stmt_avis->fetchAll();
+
         $stmt_representation = $db->prepare("SELECT first_date, last_date FROM representation WHERE spectacle_id = :spectacle_id");
         $stmt_representation->execute(['spectacle_id' => $spectacle_id]);
         $representation = $stmt_representation->fetch();
+
         $stmt_artistes = $db->prepare("SELECT * FROM artist WHERE spectacle_id = :spectacle_id");
         $stmt_artistes->execute(['spectacle_id' => $spectacle_id]);
         $artistes = $stmt_artistes->fetchAll();
+
+        $stmt_total_reservations = $db->prepare("SELECT SUM(ro.gauge) AS total_reserved_seats
+          FROM representation r
+          JOIN room ro ON r.room_id = ro.id
+          WHERE r.spectacle_id = :spectacle_id
+        ");
+        $stmt_total_reservations->execute(['spectacle_id' => $spectacle_id]);
+        $total_reserved_seats = $stmt_total_reservations->fetchColumn();
     }
   }
 
@@ -80,13 +83,13 @@ if ($spectacle_id) {
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=2">17ème</a></li>
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=3">5ème</a></li>
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">1ème</a></li>
-              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">10ème</a></li>
-              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">14ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=5">10ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=6">14ème</a></li>
             </ul>
           </div>
           <a href="room.php" class="font-semibold hover:underline">Salle</a>
-          <a href="#" class="font-semibold hover:underline">Artiste</a>
-          <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
+          <a href="artiste.php" class="font-semibold hover:underline">Artiste</a>
+          <a href="theatre.php" class="font-semibold hover:underline">Les mieux notés</a>
       </div>
       <div class="flex items-center gap-4">
         <input
@@ -151,11 +154,17 @@ if ($spectacle_id) {
                     ?>
                   </p>
                 </div>
-              </div>
-                <p>Nombre de réservation :</p>
-                <p>En cours</p>
-                <button class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md">Reservation</button>
-              </div>
+                </div>
+                  <p>Nombre de réservation :</p>
+                  <p>
+                    <?php if (isset($avg_reserved_seats)): ?>
+                      <?php echo number_format($total_reserved_seats); ?> places
+                    <?php else: ?>
+                      Pas encore de données disponibles.
+                    <?php endif; ?>
+                  </p>
+                  <button class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md">Reservation</button>
+                </div>
             </div>
             <div class="flex justify-center m-4">
               <div class="flex flex-col items-center gap-4">
