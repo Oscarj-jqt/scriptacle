@@ -31,9 +31,9 @@ $dsn = 'mysql:host=localhost;dbname=spectacles_parisiens';
 try {
     $pdo = new PDO($dsn, $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "La connexion à la base de donnée est réussie!";
+    echo "<script>La connexion à la base de donnée est réussie!</script>";
 } catch (PDOException $e) {
-    echo 'Erreur dans la connexion à la base de donnée: ' . $e->getMessage();
+    echo '<script>Erreur dans la connexion à la base de donnée: </script>' . $e->getMessage();
 }
 
 

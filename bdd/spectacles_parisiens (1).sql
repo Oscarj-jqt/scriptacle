@@ -1,10 +1,16 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le : jeu. 12 déc. 2024 à 11:37
+-- Version du serveur : 8.2.0
+-- Version de PHP : 8.2.13
 -- Création de la base de données avec le bon jeu de caractères
 CREATE DATABASE spectacles_parisiens CHARACTER SET = "utf8mb4" COLLATE = "utf8mb4_general_ci";
 
 -- Sélectionner la base de données
 USE spectacles_parisiens;
-
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -74,13 +80,13 @@ CREATE TABLE IF NOT EXISTS `avis` (
   `idAvis` int NOT NULL AUTO_INCREMENT,
   `idSpectacle` int NOT NULL,
   `idUtilisateur` int NOT NULL,
-  `commentaire` text,
+  `commentaire` text COLLATE utf8mb4_general_ci,
   `note` int DEFAULT NULL,
   `date_avis` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idAvis`),
   KEY `fk_utilisateur` (`idUtilisateur`),
   KEY `fk_spectacle` (`idSpectacle`)
-) ;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `avis`
@@ -295,6 +301,7 @@ CREATE TABLE IF NOT EXISTS `spectacle` (
   `price` float DEFAULT NULL,
   `language` enum('Français','Anglais','Espagnol','Allemand','Italien') DEFAULT 'Français',
   `category_id` int NOT NULL,
+  `theatre_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -303,13 +310,13 @@ CREATE TABLE IF NOT EXISTS `spectacle` (
 -- Déchargement des données de la table `spectacle`
 --
 
-INSERT INTO `spectacle` (`id`, `title`, `synopsis`, `duration`, `price`, `language`, `category_id`) VALUES
-(1, 'Spectaculaire', 'Le Cirque d\'Hiver Bouglione est de retour avec un show féérique ! Découvrez des artistes exceptionnels : Régina Bouglione, David-Pierre Larible, le Duo Sweet Darkness, les Flying Tabares et bien d\'autres pour un moment inoubliable en famille.', '02:00:00', 16.5, 'Français', 2),
-(2, 'Casse-Noisette', 'Le ballet Casse-Noisette raconte l\'histoire de Clara, qui reçoit un casse-noisette et plonge dans un rêve où elle affronte rats et soldats de plomb. Présenté pour la première fois en 1892, ce spectacle du Palais des Congrès offre une magie intemporelle po', '02:10:00', 45, 'Français', 2),
-(3, 'Ensemble Royal de Paris', 'Venez vivre un voyage musical exceptionnel avec l\'Ensemble Royal de Paris à l\'Église Saint-Julien-le-Pauvre. Découvrez des chefs-d\'œuvre de Vivaldi, Mozart, Schubert, Bach, Händel et Saint-Saëns, interprétés par des solistes talentueux, dont la soprano An', '01:05:00', 19, 'Français', 3),
-(4, 'Edmond', 'Edmond, la pièce à succès d\'Alexis Michalik, raconte la naissance tumultueuse de Cyrano de Bergerac. Avec ses 12 comédiens, cette œuvre primée aux Molières en 2017 pour 7 nominations, offre un théâtre de troupe dynamique. Michalik, auteur et metteur en sc', '01:50:00', 17.55, 'Français', 1),
-(5, 'Sur les traces d\'Arsène Lupin - Entre magie et mentalisme', 'Sur les traces d\'Arsène Lupin - Entre magie et mentalisme, un spectacle interactif de Jean-Michel Lupin, vous plonge dans l\'univers du célèbre gentleman cambrioleur.', '01:15:00', 16.55, 'Français', 2),
-(6, 'Black Legends', 'Black Legends, le spectacle musical à succès, revient à Bobino dès le 14 novembre 2024 ! Avec 37 tableaux mythiques retraçant un siècle de musique afro-américaine, de Nina Simone à Prince, ce spectacle vibrant rend hommage aux légendes de la soul, gospel du jazz et le Hip-Hop.', '01:45:00', 29, 'Français', 2);
+INSERT INTO `spectacle` (`id`, `title`, `synopsis`, `duration`, `price`, `language`, `category_id`, `theatre_name`) VALUES
+(1, 'Spectaculaire', 'Le Cirque d\'Hiver Bouglione est de retour avec un show féérique ! Découvrez des artistes exceptionnels : Régina Bouglione, David-Pierre Larible, le Duo Sweet Darkness, les Flying Tabares et bien d\'autres pour un moment inoubliable en famille.', '02:00:00', 16.5, 'Français', 2, '1'),
+(2, 'Casse-Noisette', 'Le ballet Casse-Noisette raconte l\'histoire de Clara, qui reçoit un casse-noisette et plonge dans un rêve où elle affronte rats et soldats de plomb. Présenté pour la première fois en 1892, ce spectacle du Palais des Congrès offre une magie intemporelle po', '02:10:00', 45, 'Français', 2, '2'),
+(3, 'Ensemble Royal de Paris', 'Venez vivre un voyage musical exceptionnel avec l\'Ensemble Royal de Paris à l\'Église Saint-Julien-le-Pauvre. Découvrez des chefs-d\'œuvre de Vivaldi, Mozart, Schubert, Bach, Händel et Saint-Saëns, interprétés par des solistes talentueux, dont la soprano An', '01:05:00', 19, 'Français', 3, '3'),
+(4, 'Edmond', 'Edmond, la pièce à succès d\'Alexis Michalik, raconte la naissance tumultueuse de Cyrano de Bergerac. Avec ses 12 comédiens, cette œuvre primée aux Molières en 2017 pour 7 nominations, offre un théâtre de troupe dynamique. Michalik, auteur et metteur en sc', '01:50:00', 17.55, 'Français', 1, '4'),
+(5, 'Sur les traces d\'Arsène Lupin', 'Sur les traces d\'Arsène Lupin - Entre magie et mentalisme, un spectacle interactif de Jean-Michel Lupin, vous plonge dans l\'univers du célèbre gentleman cambrioleur. Avec magie, mentalisme et prédictions, découvrez un voyage captivant où l\'esprit et les pensées deviennent le véritable trésor. Un succès du Festival Off d\'Avignon 2021, à ne pas manquer !', '01:15:00', 16.55, 'Français', 2, '5'),
+(6, 'Black Legends', 'Black Legends, le spectacle musical à succès, revient à Bobino dès le 14 novembre 2024 ! Avec 37 tableaux mythiques retraçant un siècle de musique afro-américaine, de Nina Simone à Prince, ce spectacle vibrant rend hommage aux légendes de la soul, gospel du jazz et le Hip-Hop.', '01:45:00', 29, 'Français', 2, '6');
 
 -- --------------------------------------------------------
 
