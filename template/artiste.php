@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-    <link rel="stylesheet" href="./output.css"> 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="../output.css"> 
+    <link rel="stylesheet" href="./input.css">
 </head>
-<body >
-  <header>
+<body>
+<header>
     <nav class="flex items-center justify-between p-4 relative">
       <div class="flex items-center gap-10 ">
         <a href="index.php" class="text-xl font-bold text-black">Scriptacle</a>
@@ -36,7 +36,6 @@
           <a href="#" class="font-semibold hover:underline">Artiste</a>
           <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
       </div>
-    
       <div class="flex items-center gap-4">
         <input
           type="text"
@@ -49,32 +48,6 @@
     </nav>
     <div class="border-t-2 border-gray-200 mt-2"></div>
   </header>
-
-    <div class="bg-gray-100 flex justify-center">
-        <div class="bg-white rounded-lg shadow-lg p-8 box-border m-6">
-            <h2 class="text-3xl font-bold text-center mb-8 text-gray-700">Connexion</h2>
-            <form act ion="login.php" method="POST">
-                <div class="mb-6">
-                    <label for="email" class="block text-gray-700 text-lg">Email</label>
-                    <input type="email" name="email" id="email" 
-                       class="w-full px-6 py-4 text-lg border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <div class="mb-6">
-                    <label for="password" class="block text-gray-700 text-lg">Mot de passe</label>
-                    <input type="password" name="password" id="password" 
-                       class="w-full px-6 py-4 text-lg border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <button type="submit" 
-                    class="w-full bg-blue-500 text-white py-4 text-lg rounded-lg hover:bg-blue-600 transition">
-                    Connexion
-                </button>
-                <p class="text-sm text-gray-600 text-center mt-6">
-                    Pas encore inscrit ? <a href="register.php" class="text-blue-500 hover:underline">Créer un compte</a>
-                </p>
-        </form>
-        </div>
-    </div>
-    
 </body>
 <script src="index.js"></script>
 </html>
