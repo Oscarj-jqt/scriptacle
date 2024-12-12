@@ -18,24 +18,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     }
 }
 
-// Récupérer les spectacles
-$stmt = $db->query("SELECT * FROM spectacles_parisiens");
+$stmt = $db->query("SELECT sp.*, c.name AS category_name
+    FROM spectacles_parisiens sp
+    LEFT JOIN category c ON sp.category_id = c.id
+");
 $spectacles = $stmt->fetchAll();
-
-// Tableau associatif d'images pour chaque spectacle
-$images = [
-  "Spectaculaire" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp",
-  "Casse-Noisette" => "https://files.offi.fr/programmation/2429813/images/200/cd6e544330a4b92dc40de2fca043bb78.jpg",
-  "Ensemble Royal de Paris" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/10/ensemble_royal_de_paris_1728894128.jpg.webp",
-  "Edmond" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/03/edmond_1709915408.jpg.webp",
-  "Sur les traces d'Arsène Lupin"
-   => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2022/07/surlestracesdarsenelupintheatrelyon_1658329341.png.webp",
-  "Black Legends" => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/04/blacklegendsbobino_01_1714379785.jpg.webp",
-
-];
 
 $theatreStmt = $db->query("SELECT * FROM theatre ORDER BY borough ASC");
 $theatres = $theatreStmt->fetchAll();
+$images = [
+  strtolower("Spectaculaire") => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp",
+  strtolower("Casse-Noisette") => "https://files.offi.fr/programmation/2429813/images/200/cd6e544330a4b92dc40de2fca043bb78.jpg",
+  strtolower("Ensemble Royal de Paris") => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/10/ensemble_royal_de_paris_1728894128.jpg.webp",
+  strtolower("Edmond") => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/03/edmond_1709915408.jpg.webp",
+  strtolower("Sur les traces d'Arsène Lupin - Entre magie et mentalisme") => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2022/07/surlestracesdarsenelupintheatrelyon_1658329341.png.webp",
+  strtolower("Black Legends") => "https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/04/blacklegendsbobino_01_1714379785.jpg.webp",
+
+];
 ?>
 
 <!DOCTYPE html>
@@ -69,13 +68,13 @@ $theatres = $theatreStmt->fetchAll();
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=2">17ème</a></li>
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=3">5ème</a></li>
               <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">1ème</a></li>
-              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">10ème</a></li>
-              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=4">14ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=5">10ème</a></li>
+              <li class="px-4 py-2 hover:bg-gray-100"><a href="arrondissement.php?arrondissement_id=6">14ème</a></li>
             </ul>
           </div>
           <a href="room.php" class="font-semibold hover:underline">Salle</a>
-          <a href="#" class="font-semibold hover:underline">Artiste</a>
-          <a href="#" class="font-semibold hover:underline">Les mieux notés</a>
+          <a href="artiste.php" class="font-semibold hover:underline">Artiste</a>
+          <a href="theatre.php" class="font-semibold hover:underline">Les mieux notés</a>
       </div>
     
       <div class="flex items-center gap-4">
@@ -91,13 +90,23 @@ $theatres = $theatreStmt->fetchAll();
     <div class="border-t-2 border-gray-200 mt-4"></div>
   </header>
   <div class="flex flex-wrap justify-between gap-6  m-6">
+  <div class="flex flex-wrap justify-between gap-6  m-6">
     <?php foreach ($spectacles as $spectacle): ?>
     <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <img src="https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp" alt="Spectaculaire" class="h-[200px] w-full object-cover rounded-lg !important">
-      <h1 class="text-center text-lg font-semibold text-gray-900"><?php echo htmlspecialchars($spectacle['title']); ?></h1>
+      <?php 
+        $spectacle_title = strtolower(trim($spectacle['title']));
+        $image_url = isset($images[$spectacle_title]) ? $images[$spectacle_title] : 'default-image.jpg'; 
+      ?>
+      <img 
+        src="<?php echo $image_url; ?>" 
+        alt="<?php echo htmlspecialchars($spectacle['title']); ?>" 
+        class="h-[200px] w-full object-cover rounded-lg !important">
+      <h1 class="text-center text-lg font-semibold text-gray-900">
+        <?php echo htmlspecialchars($spectacle['title']); ?>
+      </h1>
       <div class="p-4">
         <div class="flex justify-center items-center">
-          <h2 class="text-lg font-semibold text-gray-900"><?php echo htmlspecialchars($spectacle['borough']); ?></h2>
+          <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
         </div>
         <p class="text-center text-gray-600 text-sm mt-2">
          <?php 
@@ -106,82 +115,11 @@ $theatres = $theatreStmt->fetchAll();
           ?>
         </p>
         <div class="mt-4 flex justify-center">
-          <a href="affichage.html" class="text-sm font-semibold hover:underline">Afficher</a>
+          <a href="affichage.php?id=<?php echo $spectacle['id']; ?>" class="text-sm font-semibold hover:underline">Afficher</a>
         </div>
       </div>
     </div>
-
-    <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <img src="https://files.offi.fr/programmation/2429813/images/200/cd6e544330a4b92dc40de2fca043bb78.jpg" alt="Casse-Noisette" class="h-[200px] w-full object-cover rounded-lg ">
-      <h1 class="text-center text-lg font-semibold text-gray-900">Casse-Noisette</h1>
-      <div class="p-4">
-        <div class="flex justify-center items-center">
-          <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
-        </div>
-        <p class="text-center text-gray-600 text-sm mt-2">Opéra</p>
-        <div class="mt-4 flex justify-center">
-          <a href="affichage.html" class="text-sm font-semibold hover:underline">Afficher</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <img src="https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/10/ensemble_royal_de_paris_1728894128.jpg.webp" alt="" class="h-[200px] w-full object-cover rounded-lg">
-      <h1 class="text-center text-lg font-semibold text-gray-900">Ensemble Royal de Paris</h1>
-      <div class="p-4">
-        <div class="flex justify-center items-center">
-          <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
-        </div>
-        <p class="text-center text-gray-600 text-sm mt-2">Concert</p>
-        <div class="mt-4 flex justify-center">
-          <a href="affichage.html" class="text-sm font-semibold hover:underline">Afficher</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <img src=" https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/03/edmond_1709915408.jpg.webp" alt="" class="h-[200px] w-full object-cover rounded-lg">
-      <h1 class="text-center text-lg font-semibold text-gray-900">Edmond</h1>
-      <div class="p-4">
-        <div class="flex justify-center items-center">
-          <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
-        </div>
-        <p class="text-center text-gray-600 text-sm mt-2">Théâtre Contemporain</p>
-        <div class="mt-4 flex justify-center">
-          <a href="affichage.html" class="text-sm font-semibold hover:underline">Afficher</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <img src=" https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2022/07/surlestracesdarsenelupintheatrelyon_1658329341.png.webp" alt="" class="h-[200px] w-full object-cover rounded-lg">
-      <h1 class="text-center text-lg font-semibold text-gray-900">Arsene Lupin</h1>
-      <div class="p-4">
-        <div class="flex justify-center items-center">
-          <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
-        </div>
-        <p class="text-center text-gray-600 text-sm mt-2">Théâtre</p>
-        <div class="mt-4 flex justify-center">
-          <a href="affichage.html" class="text-sm font-semibold hover:underline">Afficher</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <img src=" https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/04/blacklegendsbobino_01_1714379785.jpg.webp" alt="" class="h-[200px] w-full object-cover rounded-lg">
-      <h1 class="text-center text-lg font-semibold text-gray-900">Black Légends</h1>
-      <div class="p-4">
-        <div class="flex justify-center items-center">
-          <h2 class="text-lg font-semibold text-gray-900">Arrondissement</h2>
-        </div>
-        <p class="text-center text-gray-600 text-sm mt-2">Musical</p>
-        <div class="mt-4 flex justify-center">
-          <a href="affichage.html" class="text-sm font-semibold hover:underline">Afficher</a>
-        </div>
-      </div>
-    </div>
-  </div> 
-  <?php endforeach; ?>
+    <?php endforeach; ?>
 </body>
 <script src="index.js"></script>
 </html>
