@@ -2,6 +2,16 @@
     session_start();
     require '../db.php';
 
+    // Tableau associatif d'images pour chaque lieu
+$images = [
+  "Cirque d'Hiver" => "https://www.cirquedhiver.com/pics/location/image8.jpg",
+  "Grand Amphithéâtre" => "https://www.lightzoomlumiere.fr/wp-content/uploads/2023/10/Palais-des-Congres-de-Paris-grand-amphitheatre-eclairage-LED-blanc-chaud-cote-jardin-Concepteur-lumiere-maitre-oeuvre-Lyum-Luminaire-Anolis-Ambiane-Copyright-La-Chouette-Photo-Olivier-Hannauer.jpg",
+  "Eglise Saint-Julien Le Pauvre" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNCimqhJOd4bwap9NTToCAyCy-8WzqUooMYw&s",
+  "Salle du Palais-Royal" => "https://parisjetaime.com/data/layout_image/14289_Théâtre-du-Palais-Royal-Salle-de-spectacle--630x405--©-B.-Richebé_square_1-1_xl.jpg?ver=1700687003",
+  "Le Laurette théâtre" => "https://www.theatreonline.com/BDDPhoto/Medias//theatre/593/52299/grand.jpg",
+  "La salle de Bobino" => "https://www.theatreinparis.com/uploads/images/theatre/theatre-bobino-header.png",
+];
+
     $sortOrder = isset($_GET['sort']) && $_GET['sort'] === 'desc' ? 'DESC' : 'ASC';
     $stmt = $db->query("SELECT * FROM room ORDER BY gauge $sortOrder");
     $room = $stmt->fetchAll();
@@ -69,10 +79,14 @@
 <div class="flex flex-wrap justify-between gap-6  m-6">
     <?php foreach ($room as $room): ?>
     <div class="w-[400px]  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <img 
-        src="https://d1k4bi32qf3nf2.cloudfront.net/thumb@3x/product/2024/06/spectaculaire_1719221025.jpg.webp" 
-        alt="<?php echo htmlspecialchars($room['name']); ?>" 
-        class="h-[200px] w-full object-cover rounded-lg !important">
+    <?php 
+                // Associe une image en fonction du nom du théâtre
+                $imageUrl = isset($images[$room['name']]) ? $images[$room['name']] : ''; 
+                ?>
+                <img 
+                    src="<?php echo htmlspecialchars($imageUrl); ?>" 
+                    alt="<?php echo htmlspecialchars($room['name']); ?>" 
+                    class="h-[200px] w-full object-cover rounded-lg !important">
       <h1 class="text-center text-lg font-semibold text-gray-900">
         <?php echo htmlspecialchars($room['name']); ?>
       </h1>

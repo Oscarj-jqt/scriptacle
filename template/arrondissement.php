@@ -20,7 +20,7 @@ if (!array_key_exists($arrondissementId, $arrondissementMap)) {
     die("Arrondissement non trouvé.");
 }
 
-// Tableau associatif d'images pour chaque spectacle
+// Tableau associatif d'images pour chaque lieu
 $images = [
   "Cirque d'Hiver Bouglione" => "https://upload.wikimedia.org/wikipedia/commons/c/cf/Cirque_d%27hiver%2C_Paris_11e%2C_Southwest_view_20140316_1.jpg",
   "Le Palais des Congrès" => "https://paris-promeneurs.com/wp-content/uploads/2021/11/palais-congres1-800.jpg",
