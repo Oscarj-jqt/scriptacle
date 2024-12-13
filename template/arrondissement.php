@@ -20,6 +20,16 @@ if (!array_key_exists($arrondissementId, $arrondissementMap)) {
     die("Arrondissement non trouvé.");
 }
 
+// Tableau associatif d'images pour chaque spectacle
+$images = [
+  "Cirque d'Hiver Bouglione" => "https://upload.wikimedia.org/wikipedia/commons/c/cf/Cirque_d%27hiver%2C_Paris_11e%2C_Southwest_view_20140316_1.jpg",
+  "Le Palais des Congrès" => "https://paris-promeneurs.com/wp-content/uploads/2021/11/palais-congres1-800.jpg",
+  "Église Saint-Julien le Pauvre" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROl-12Og07xu9AGgB-uwZE9jwz1JEgdlpLQA&s",
+  "Théâtre du Palais Royal" => "https://upload.wikimedia.org/wikipedia/commons/b/bc/Théâtre_du_Palais-Royal_Paris_1er_005.JPG",
+  "Laurette Théâtre" => "https://lirp.cdn-website.com/65947dc0/dms3rep/multi/opt/devanturetheatreparis-640w.jpg",
+  "Bobino" => "https://cdn.sortiraparis.com/images/80/105766/1049053-bobino.jpg",
+];
+
 $borough = $arrondissementMap[$arrondissementId];
 $stmt = $db->prepare("SELECT * FROM theatre WHERE borough = :borough");
 $stmt->execute(['borough' => $borough]);
@@ -31,7 +41,7 @@ $theatres = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Arrondissement</title>
     <link rel="stylesheet" href="../output.css"> 
     <link rel="stylesheet" href="./input.css">
 </head>
@@ -78,14 +88,20 @@ $theatres = $stmt->fetchAll();
   </header>
   <main class="m-6">
     <h1 class="text-2xl font-bold text-center mb-6">
-        Théâtres de l’arrondissement <?php echo (int)substr($borough, -2); ?>ème
+        Lieu du <?php echo (int)substr($borough, -2); ?>ème arrondissement 
     </h1>
     <div class="flex items-center justify-center gap-6">
         <?php if (count($theatres) > 0): ?>
             <?php foreach ($theatres as $theatre): ?>
             <div class="w-[400px] bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
+                <!-- Ici on récupère l'image à afficher selon le titre du spectacle -->
+                <!--  -->
+                <?php 
+                // Associe une image en fonction du nom du théâtre
+                $imageUrl = isset($images[$theatre['name']]) ? $images[$theatre['name']] : ''; 
+                ?>
                 <img 
-                    src="https://via.placeholder.com/400x200?text=Théâtre" 
+                    src="<?php echo htmlspecialchars($imageUrl); ?>" 
                     alt="<?php echo htmlspecialchars($theatre['name']); ?>" 
                     class="h-[200px] w-full object-cover rounded-lg">
                 <h1 class="text-center text-lg font-semibold text-gray-900 mt-4"><?php echo htmlspecialchars($theatre['name']); ?></h1>
@@ -93,6 +109,7 @@ $theatres = $stmt->fetchAll();
                 <p class="text-center text-gray-500 text-sm mt-4">Arrondissement <?php echo (int)substr($borough, -2); ?>ème</p>
             </div>
             <?php endforeach; ?>
+
         <?php else: ?>
             <p class="text-center text-gray-600">Aucun théâtre trouvé dans cet arrondissement.</p>
         <?php endif; ?>

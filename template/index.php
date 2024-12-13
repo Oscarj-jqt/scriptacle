@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 
 // Récupérer les spectacles avec leurs arrondissements
 $query = "
-    SELECT spectacle.id, spectacle.title, theatre.borough
+    SELECT spectacle.id, spectacle.title, theatre.borough, category.name AS category_name
     FROM spectacle
     LEFT JOIN theatre ON spectacle.theatre_name = theatre.id
     LEFT JOIN category ON spectacle.category_id = category.id
@@ -57,36 +57,42 @@ $categories = $stmtCategories->fetchAll();
 </head>
 <body>
 
-  <header>
-    <nav class="flex items-center justify-between p-4 relative">
-    <div class="flex items-center gap-10 ">
-        <a href="index.php" class="text-xl font-bold text-black">Scriptacle</a>
-        <div class="relative">
-  <a href="#" class="font-semibold hover:underline cursor-pointer" id="toggleCategories">Catégories</a>
-  <ul id="categoriesMenu" class="absolute left-0 top-10 bg-white shadow-lg rounded-lg hidden z-10 gap-4 px-4 py-2">
-    <?php foreach ($categories as $category): ?>
-      <li class="hover:bg-gray-100">
-        <a href="category.php?category_id=<?php echo htmlspecialchars($category['id']); ?>" 
-           class="px-4 py-2 font-semibold text-gray-700 hover:text-blue-600">
-          <?php echo htmlspecialchars($category['name']); ?>
-        </a>
-      </li>
-    <?php endforeach; ?>
-  </ul>
-</div>
-    
-      <div class="flex items-center gap-4">
-        <input
-          type="text"
-          placeholder="Rechercher"
-          class="p-2 w-64 rounded-md bg-gray-100 text-black"
-        />
-        <a href="login.html" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
-          Connexion
-        </a>
-    </nav>
-    <div class="border-t-2 border-gray-200 mt-2"></div>
-  </header>
+<header class="flex items-center justify-between p-4 bg-white shadow-md">
+  <!-- Titre -->
+  <a href="index.php" class="text-xl font-bold text-black">Scriptacle</a>
+
+  <!-- Navigation -->
+  <nav class="flex items-center gap-14 relative">
+    <div class="relative mr-4">
+      <a href="#" class="font-semibold hover:underline cursor-pointer" id="toggleCategories">Catégories</a>
+      <a href="room.php" class="font-semibold hover:underline">Salle</a>
+      <a href="artiste.php" class="font-semibold hover:underline">Artiste</a>
+      <a href="theatre.php" class="font-semibold hover:underline">Les mieux notés</a>
+      <ul id="categoriesMenu" class="absolute left-0 top-10 bg-white shadow-lg rounded-lg hidden z-10 gap-4 px-4 py-2">
+        <?php foreach ($categories as $category): ?>
+          <li class="hover:bg-gray-100">
+            <a href="category.php?category_id=<?php echo htmlspecialchars($category['id']); ?>" 
+              class="px-4 py-2 font-semibold text-gray-700 hover:text-blue-600">
+              <?php echo htmlspecialchars($category['name']); ?>
+            </a>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Barre de recherche et connexion -->
+  <div class="flex items-center gap-4">
+    <input
+      type="text"
+      placeholder="Rechercher"
+      class="p-2 w-64 rounded-md bg-gray-100 text-black"
+    />
+    <a href="login.html" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
+      Connexion
+    </a>
+  </div>
+</header>
 
   <div class="flex flex-wrap justify-between gap-6 m-6">
     <?php foreach ($spectacles as $spectacle): ?>
@@ -102,7 +108,14 @@ $categories = $stmtCategories->fetchAll();
         <div class="flex justify-center items-center">
           <h2 class="text-lg font-semibold text-gray-900"><?php echo htmlspecialchars($spectacle['borough']); ?></h2>
         </div>
-        <p class="text-center text-gray-600 text-sm mt-2">Théâtre</p>
+
+      <p class="text-center text-gray-600 text-sm mt-2">
+      <p class="text-center text-gray-600 text-sm mt-2">
+        <?php 
+        // Vérifier si une catégorie est associée au spectacle
+        echo !empty($spectacle['category_name']) ? htmlspecialchars($spectacle['category_name']) : 'Catégorie non spécifiée';
+        ?>
+      </p>        
         <div class="mt-4 flex justify-center">
           <a href="affichage.php?id=<?php echo $spectacle['id']; ?>" class="text-sm font-semibold hover:underline">Afficher</a>
         </div>

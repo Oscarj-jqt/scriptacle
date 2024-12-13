@@ -22,6 +22,8 @@ if ($spectacle_id) {
     $stmt->execute(['id' => $spectacle_id]);
     $spectacle = $stmt->fetch();
 
+    
+
     if ($spectacle) {
         $title = htmlspecialchars($spectacle['title']);
         $description = htmlspecialchars($spectacle['synopsis']);
@@ -45,6 +47,7 @@ if ($spectacle_id) {
         ");
         $stmt_total_reservations->execute(['spectacle_id' => $spectacle_id]);
         $total_reserved_seats = $stmt_total_reservations->fetchColumn();
+        
     }
   }
 
@@ -187,7 +190,7 @@ if ($spectacle_id) {
               </div>
             </div>
             <div id="map" class="flex justify-center border-gray-200 border rounded-lg shadow-lg overflow-hidden h-[250px] w-full">
-              <h1>Géocalisation</h1>
+              <h1>Géolocalisation</h1>
             </div>
         </div>
       </div>
