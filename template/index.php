@@ -30,14 +30,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 }
 
 // Récupérer les spectacles avec leurs arrondissements
-$query = "
-    SELECT spectacle.id, spectacle.title, theatre.borough
+$query = "SELECT spectacle.id, spectacle.title, theatre.borough
     FROM spectacle
     LEFT JOIN theatre ON spectacle.theatre_name = theatre.id
     LEFT JOIN category ON spectacle.category_id = category.id
 ";
 $stmt = $db->query($query);
 $spectacles = $stmt->fetchAll();
+
+// $stmt = $db->query("SELECT sp.*, c.name AS category_name
+//     FROM spectacles_parisiens sp
+//     LEFT JOIN category c ON sp.category_id = c.id
+// ");
+// $spectacles = $stmt->fetchAll();
 
 // Récupération des catégories
 $queryCategories = "SELECT id, name FROM category";
@@ -91,9 +96,7 @@ $categories = $stmtCategories->fetchAll();
   <div class="flex flex-wrap justify-between gap-6 m-6">
     <?php foreach ($spectacles as $spectacle): ?>
     <div class="w-[400px] bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden p-6">
-      <!-- Utilisation de la variable d'image spécifique -->
       <?php 
-        // Vérifier si une image est associée au titre du spectacle
         $imageUrl = isset($images[$spectacle['title']]) ? $images[$spectacle['title']] : 'images/default.jpg';
       ?>
       <img src="<?php echo htmlspecialchars($imageUrl); ?>" alt="Spectacle Image" class="h-[200px] w-full object-cover rounded-lg !important">
