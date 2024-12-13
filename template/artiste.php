@@ -2,23 +2,22 @@
   session_start();
   require '../db.php';
 
-  $stmt = $db->prepare("SELECT 
-    artist.id AS artist_id,
-    CONCAT(artist.firstName, ' ', artist.lastName) AS artist_name,
-    AVG(avis.note) AS avg_rating
-  FROM 
-    avis
-  JOIN 
-    spectacles_parisiens ON avis.idSpectacle = spectacles_parisiens.id
-  JOIN 
-    artist ON spectacles_parisiens.id = artist.spectacle_id
-  GROUP BY 
-    artist.id
-  ORDER BY 
-    avg_rating DESC;
-    ");
-    $stmt->execute();
-    $artists = $stmt->fetchAll();
+$stmt = $db->prepare("SELECT 
+artist.id AS artist_id,
+CONCAT(COALESCE(artist.firstName, ''), ' ', COALESCE(artist.lastName, '')) AS artist_name,
+AVG(avis.note) AS avg_rating
+FROM 
+  avis
+JOIN 
+  spectacle ON avis.idSpectacle = spectacle.id
+JOIN 
+  artist ON spectacle.id = artist.spectacle_id
+GROUP BY 
+  artist.id
+ORDER BY 
+  avg_rating DESC;");
+$stmt->execute();
+$artists = $stmt->fetchAll();
 ?>
 
 
@@ -27,7 +26,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Artistes</title>
     <link rel="stylesheet" href="../output.css"> 
     <link rel="stylesheet" href="./input.css">
 </head>
