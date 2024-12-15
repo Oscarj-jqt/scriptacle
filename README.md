@@ -29,3 +29,7 @@ Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivan
 * **Base de données** (MySQL)
 * **Serveur local** (ex. WAMP, XAMPP ou LAMP)
 
+## Contributeurs au projet
+
+Oscar, Alexis, Aryles, Baptiste, Hugo
+
