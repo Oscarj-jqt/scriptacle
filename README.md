@@ -29,6 +29,32 @@ Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivan
 * **Base de données** (MySQL)
 * **Serveur local** (ex. WAMP, XAMPP ou LAMP)
 
+### Instructions pour l'installation
+
+ **Cloner le projet** :
+```bash
+git clone https://github.com/Oscarj-jqt/scriptacle
+cd scriptacle
+```
+
+### Installer les dépendances PHP avec composer
+```bash
+composer install
+```
+
+### Base de donnée
+Importez la base de donnée "spectacles_parisiens" sur avec votre serveur local WAMP ou XAMPP
+
+### Exécution du projet
+```bash
+php -S localhost:8000
+```
+
+### Accéder à la page d'accueil de l'application
+
+http://localhost/scriptacle/template/
+
+
 ## Contributeurs au projet
 
 Oscar, Alexis, Aryles, Baptiste, Hugo
