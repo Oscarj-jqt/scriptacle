@@ -43,7 +43,8 @@ composer install
 ```
 
 ### Base de donnée
-Importez la base de donnée "spectacles_parisiens" sur avec votre serveur local WAMP ou XAMPP
+
+Importez la base de donnée "spectacles_parisiens" avec votre serveur local WAMP ou XAMPP
 
 ### Exécution du projet
 ```bash
