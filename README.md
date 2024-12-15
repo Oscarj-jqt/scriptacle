@@ -44,7 +44,7 @@ composer install
 
 ### Base de donnée
 
-Importez la base de donnée "spectacles_parisiens", située dans : scriptacle/bdd, avec votre serveur local WAMP ou XAMPP
+Importe la base de donnée "spectacles_parisiens", située dans : scriptacle/bdd, avec votre serveur local WAMP ou XAMPP
 
 ### Exécution du projet
 ```bash
