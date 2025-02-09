@@ -9,14 +9,14 @@ Le backend est développé en **PHP avec MySQL**, tandis que le frontend est ré
 ## Sommaire
 
 - [Contexte](#contexte)
+- - [Description des Choix Techniques](#description-des-choix-techniques)
+  - [Backend - PHP & MySQL](#backend---php--mysql)
+  - [Frontend - HTML, CSS, et JavaScript](#frontend---html-css-et-javascript)
+- [Fonctionnalités Principales](#fonctionnalités-principales)
 - [Installation](#installation)  
   - [Prérequis](#prérequis)  
   - [Installation et configuration](#installation-et-configuration)  
   - [Lancement du projet](#lancement-du-projet)  
-- [Description des Choix Techniques](#description-des-choix-techniques)
-  - [Backend - PHP & MySQL](#backend---php--mysql)
-  - [Frontend - HTML, CSS, et JavaScript](#frontend---html-css-et-javascript)
-- [Fonctionnalités Principales](#fonctionnalités-principales)
 - [Participants](#participants)
 - [Auteur](#auteurs)
 
