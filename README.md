@@ -17,7 +17,6 @@ Le backend est développé en **PHP avec MySQL**, tandis que le frontend est ré
   - [Prérequis](#prérequis)  
   - [Installation et configuration](#installation-et-configuration)  
   - [Lancement du projet](#lancement-du-projet)  
-- [Participants](#participants)
 - [Auteur](#auteurs)
 
 ## Contexte
