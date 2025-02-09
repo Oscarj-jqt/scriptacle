@@ -8,7 +8,7 @@ Le backend est développé en **PHP avec MySQL**, tandis que le frontend est ré
 
 ## Sommaire
 
-- [Contexte](#contexte)
+- [Contexte](#scriptacle)
 - - [Description des Choix Techniques](#description-des-choix-techniques)
   - [Backend - PHP & MySQL](#backend---php--mysql)
   - [Frontend - HTML, CSS, et JavaScript](#frontend---html-css-et-javascript)
@@ -19,9 +19,25 @@ Le backend est développé en **PHP avec MySQL**, tandis que le frontend est ré
   - [Lancement du projet](#lancement-du-projet)  
 - [Auteur](#auteurs)
 
-## Contexte
+- ## Description des Choix Techniques
 
-Scriptacle est un projet visant à faciliter la gestion des spectacles parisiens en permettant aux utilisateurs de découvrir, réserver et évaluer des représentations.
+### Backend - PHP & MySQL
+* **PHP** est utilisé pour la gestion des requêtes backend et des interactions avec la base de données.
+* **MySQL** stocke les informations relatives aux utilisateurs, spectacles, réservations et commentaires.
+* **PDO** est utilisé pour sécuriser les requêtes SQL et éviter les injections.
+
+### Frontend - HTML, CSS, et JavaScript
+* **HTML/CSS** pour la structure et le design de l'application.
+* **JavaScript** pour l'interactivité, y compris la gestion des formulaires et des réservations.
+* **Bootstrap** pour un design responsive.
+
+## Fonctionnalités Principales
+
+* **Inscription et connexion des utilisateurs**
+* **Gestion des spectacles** (titre, description, intervenants, etc.)
+* **Réservations** selon les places disponibles
+* **Commentaires et notation** après visionnage
+* **Réactions aux commentaires** (like, dislike, surpris, etc.)
 
 ## Installation
 
@@ -42,26 +58,6 @@ Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivan
    ```sh
    http://localhost/scriptacle
    ```
-
-## Description des Choix Techniques
-
-### Backend - PHP & MySQL
-* **PHP** est utilisé pour la gestion des requêtes backend et des interactions avec la base de données.
-* **MySQL** stocke les informations relatives aux utilisateurs, spectacles, réservations et commentaires.
-* **PDO** est utilisé pour sécuriser les requêtes SQL et éviter les injections.
-
-### Frontend - HTML, CSS, et JavaScript
-* **HTML/CSS** pour la structure et le design de l'application.
-* **JavaScript** pour l'interactivité, y compris la gestion des formulaires et des réservations.
-* **Bootstrap** pour un design responsive.
-
-## Fonctionnalités Principales
-
-* **Inscription et connexion des utilisateurs**
-* **Gestion des spectacles** (titre, description, intervenants, etc.)
-* **Réservations** selon les places disponibles
-* **Commentaires et notation** après visionnage
-* **Réactions aux commentaires** (like, dislike, surpris, etc.)
 
 
 ### Installation et configuration
