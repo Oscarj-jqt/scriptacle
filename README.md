@@ -4,7 +4,7 @@ Ce projet permet de gérer un annuaire de spectacles parisiens, incluant les lie
 
 Le backend est développé en **PHP avec MySQL**, tandis que le frontend est réalisé avec **HTML/CSS et JavaScript**.
 
-![Demo de l'application](/documentation/home.png)
+![Demo de l'application](/documentation/scriptacle_cap.png)
 
 ## Sommaire
 
