@@ -1,26 +1,32 @@
 # Scriptacle
 
-Ce projet permet de gérer un annuaire de spectacles parisiens, incluant les lieux, les spectacles, les réservations et les commentaires des utilisateurs. Le système inclut des fonctionnalités comme l'inscription des utilisateurs, la gestion des spectacles et des réservations, ainsi que l'attribution de notes et de commentaires. Le backend est développé en **PHP avec MySQL**, tandis que le frontend est réalisé avec **HTML/CSS et JavaScript**.
+Ce projet permet de gérer un annuaire de spectacles parisiens, incluant les lieux, les spectacles, les réservations et les commentaires des utilisateurs. Le système intègre des fonctionnalités telles que l'inscription des utilisateurs, la gestion des spectacles et des réservations, ainsi que l'attribution de notes et de commentaires.  
 
-## Description des Choix Techniques
+Le backend est développé en **PHP avec MySQL**, tandis que le frontend est réalisé avec **HTML/CSS et JavaScript**.
 
-### Backend - PHP & MySQL
-* **PHP** est utilisé pour la gestion des requêtes backend et des interactions avec la base de données. Le code backend inclut des fonctionnalités pour l'inscription des utilisateurs, la gestion des spectacles et des réservations.
-* **MySQL** est la base de données choisie pour stocker toutes les informations relatives aux utilisateurs, spectacles, réservations et commentaires.
-* **PDO** est utilisé pour sécuriser les interactions avec la base de données en utilisant des requêtes préparées et éviter les injections SQL.
+![Demo de l'application](/documentation/home.png)
 
-### Frontend - HTML, CSS, et JavaScript
-* Le **frontend** est développé avec du **HTML**, du **CSS** pour le design, et du **JavaScript** pour rendre l'application interactive. Les formulaires de connexion et d'inscription, ainsi que la gestion des réservations et des commentaires, sont gérés avec du JavaScript.
-* **Bootstrap** est utilisé pour le design responsive et l'interface utilisateur.
+## Sommaire
 
-## Fonctionnalités Principales
-* **Inscription et connexion des utilisateurs** : Les utilisateurs peuvent s'inscrire et se connecter pour gérer leurs réservations et laisser des commentaires.
-* **Gestion des spectacles** : Chaque spectacle a un titre, une description, et peut être associé à plusieurs parties prenantes (acteurs, metteur en scène, etc.).
-* **Réservations** : Les utilisateurs peuvent réserver des places pour un spectacle, sous réserve de places disponibles.
-* **Commentaires et notation** : Les utilisateurs peuvent commenter et noter un spectacle uniquement s'ils l'ont vu.
-* **Réactions aux commentaires** : Les utilisateurs peuvent réagir aux commentaires avec des options prédéfinies (like, dislike, surprised, dubious).
+- [Contexte](#contexte)
+- [Installation](#installation)  
+  - [Prérequis](#prérequis)  
+  - [Installation et configuration](#installation-et-configuration)  
+  - [Lancement du projet](#lancement-du-projet)  
+- [Description des Choix Techniques](#description-des-choix-techniques)
+  - [Backend - PHP & MySQL](#backend---php--mysql)
+  - [Frontend - HTML, CSS, et JavaScript](#frontend---html-css-et-javascript)
+- [Fonctionnalités Principales](#fonctionnalités-principales)
+- [Participants](#participants)
+- [Auteur](#auteurs)
 
-## Prérequis
+## Contexte
+
+Scriptacle est un projet visant à faciliter la gestion des spectacles parisiens en permettant aux utilisateurs de découvrir, réserver et évaluer des représentations.
+
+## Installation
+
+### Prérequis
 
 Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivants :
 
@@ -29,7 +35,44 @@ Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivan
 * **Base de données** (MySQL)
 * **Serveur local** (ex. WAMP, XAMPP ou LAMP)
 
-### Instructions pour l'installation
+### Installation et configuration
+
+1. Clone le dépôt :
+   ```sh
+   git clone https://github.com/ton-repo/scriptacle.git
+   cd scriptacle
+   ```
+2. Configure la base de données MySQL et importe le fichier `database.sql`
+3. Configure les paramètres de connexion dans le fichier `.env`
+
+### Lancement du projet
+
+1. Démarre le serveur local (WAMP, XAMPP, LAMP)
+2. Accède au projet via :
+   ```sh
+   http://localhost/scriptacle
+   ```
+
+## Description des Choix Techniques
+
+### Backend - PHP & MySQL
+* **PHP** est utilisé pour la gestion des requêtes backend et des interactions avec la base de données.
+* **MySQL** stocke les informations relatives aux utilisateurs, spectacles, réservations et commentaires.
+* **PDO** est utilisé pour sécuriser les requêtes SQL et éviter les injections.
+
+### Frontend - HTML, CSS, et JavaScript
+* **HTML/CSS** pour la structure et le design de l'application.
+* **JavaScript** pour l'interactivité, y compris la gestion des formulaires et des réservations.
+* **Bootstrap** pour un design responsive.
+
+## Fonctionnalités Principales
+
+* **Inscription et connexion des utilisateurs**
+* **Gestion des spectacles** (titre, description, intervenants, etc.)
+* **Réservations** selon les places disponibles
+* **Commentaires et notation** après visionnage
+* **Réactions aux commentaires** (like, dislike, surpris, etc.)
+
 
  **Cloner le projet** :
 ```bash
@@ -56,7 +99,7 @@ php -S localhost:8000
 http://localhost/scriptacle/template/
 
 
-## Contributeurs au projet
+## Auteurs
 
 Oscar, Alexis, Aryles, Baptiste, Hugo
 
