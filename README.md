@@ -35,17 +35,8 @@ Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivan
 * **Base de données** (MySQL)
 * **Serveur local** (ex. WAMP, XAMPP ou LAMP)
 
-### Installation et configuration
 
-1. Clone le dépôt :
-   ```sh
-   git clone https://github.com/ton-repo/scriptacle.git
-   cd scriptacle
-   ```
-2. Configure la base de données MySQL et importe le fichier `database.sql`
-3. Configure les paramètres de connexion dans le fichier `.env`
 
-### Lancement du projet
 
 1. Démarre le serveur local (WAMP, XAMPP, LAMP)
 2. Accède au projet via :
@@ -74,22 +65,23 @@ Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivan
 * **Réactions aux commentaires** (like, dislike, surpris, etc.)
 
 
+### Installation et configuration
  **Cloner le projet** :
 ```bash
 git clone https://github.com/Oscarj-jqt/scriptacle
 cd scriptacle
 ```
 
-### Installer les dépendances PHP avec composer
+Installer les dépendances PHP avec composer
 ```bash
 composer install
 ```
 
-### Base de donnée
+Base de donnée
 
 Importe la base de donnée "spectacles_parisiens", située dans : scriptacle/bdd, avec votre serveur local WAMP ou XAMPP
 
-### Exécution du projet
+### Lancement du projet
 ```bash
 php -S localhost:8000
 ```
