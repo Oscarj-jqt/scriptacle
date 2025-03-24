@@ -20,15 +20,16 @@ Ce projet permet de gérer un annuaire de spectacles parisiens, incluant les lie
 
 - ## Description des Choix Techniques
 
-Le backend est développé en **PHP avec MySQL**, tandis que le frontend est réalisé avec **HTML/CSS et JavaScript**.
 
 ### Backend - PHP & MySQL
 * **PHP** est utilisé pour la gestion des requêtes backend et des interactions avec la base de données.
 * **MySQL** stocke les informations relatives aux utilisateurs, spectacles, réservations et commentaires.
 
+
 ### Frontend - HTML, CSS, et JavaScript
 * **JavaScript** pour l'interactivité, y compris la gestion des formulaires et des réservations.
 * **Bootstrap** pour un design responsive.
+
 
 ## Fonctionnalités Principales
 
@@ -38,7 +39,6 @@ Le backend est développé en **PHP avec MySQL**, tandis que le frontend est ré
 * **Commentaires et notation** après visionnage
 * **Réactions aux commentaires** (like, dislike, surpris, etc.)
 
-## Installation
 
 ### Prérequis
 
