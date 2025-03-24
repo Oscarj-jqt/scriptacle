@@ -2,7 +2,6 @@
 
 Ce projet permet de gérer un annuaire de spectacles parisiens, incluant les lieux, les spectacles, les réservations et les commentaires des utilisateurs. Le système intègre des fonctionnalités telles que l'inscription des utilisateurs, la gestion des spectacles et des réservations, ainsi que l'attribution de notes et de commentaires.  
 
-Le backend est développé en **PHP avec MySQL**, tandis que le frontend est réalisé avec **HTML/CSS et JavaScript**.
 
 ![Demo de l'application](/scriptacle_cap.png)
 
@@ -21,13 +20,13 @@ Le backend est développé en **PHP avec MySQL**, tandis que le frontend est ré
 
 - ## Description des Choix Techniques
 
+Le backend est développé en **PHP avec MySQL**, tandis que le frontend est réalisé avec **HTML/CSS et JavaScript**.
+
 ### Backend - PHP & MySQL
 * **PHP** est utilisé pour la gestion des requêtes backend et des interactions avec la base de données.
 * **MySQL** stocke les informations relatives aux utilisateurs, spectacles, réservations et commentaires.
-* **PDO** est utilisé pour sécuriser les requêtes SQL et éviter les injections.
 
 ### Frontend - HTML, CSS, et JavaScript
-* **HTML/CSS** pour la structure et le design de l'application.
 * **JavaScript** pour l'interactivité, y compris la gestion des formulaires et des réservations.
 * **Bootstrap** pour un design responsive.
 
@@ -52,12 +51,7 @@ Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivan
 
 
 
-
 1. Démarre le serveur local (WAMP, XAMPP, LAMP)
-2. Accède au projet via :
-   ```sh
-   http://localhost/scriptacle
-   ```
 
 
 ### Installation et configuration
@@ -72,7 +66,7 @@ Installer les dépendances PHP avec composer
 composer install
 ```
 
-Base de donnée
+### Base de donnée
 
 Importe la base de donnée "spectacles_parisiens", située dans : scriptacle/bdd, avec votre serveur local WAMP ou XAMPP
 
