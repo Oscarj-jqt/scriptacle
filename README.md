@@ -82,5 +82,8 @@ http://localhost/scriptacle/template/
 
 ## Auteurs
 
-Oscar, Alexis, Aryles, Baptiste, Hugo
-
+Oscar JACQUET - Développeur Full Stack
+Alexis HU - Développeur Front End
+Aryles BEN-CHABANE - Développeur Back End
+Baptiste BONNICHON-JACQUES - Développeur Back End 
+Hugo DA ROCHA - Développeur Front End
