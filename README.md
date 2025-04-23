@@ -2,6 +2,7 @@
 
 Ce projet permet de gérer un annuaire de spectacles parisiens, incluant les lieux, les spectacles, les réservations et les commentaires des utilisateurs. Le système intègre des fonctionnalités telles que l'inscription des utilisateurs, la gestion des spectacles et des réservations, ainsi que l'attribution de notes et de commentaires.  
 
+Aperçu de l'application
 
 ![Demo de l'application](/scriptacle_cap.png)
 
