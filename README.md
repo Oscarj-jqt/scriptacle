@@ -38,7 +38,6 @@ Aperçu de l'application
 * **Gestion des spectacles** (titre, description, intervenants, etc.)
 * **Réservations** selon les places disponibles
 * **Commentaires et notation** après visionnage
-* **Réactions aux commentaires** (like, dislike, surpris, etc.)
 
 
 ### Prérequis
