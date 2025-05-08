@@ -29,7 +29,7 @@ Aperçu de l'application
 
 ### Frontend - HTML, CSS, et JavaScript
 * **JavaScript** pour l'interactivité, y compris la gestion des formulaires et des réservations.
-* **Bootstrap** pour un design responsive.
+* **Tailwind** pour un design responsive.
 
 
 ## Fonctionnalités Principales
