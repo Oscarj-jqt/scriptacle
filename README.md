@@ -36,7 +36,6 @@ Aperçu de l'application
 
 * **Inscription et connexion des utilisateurs**
 * **Gestion des spectacles** (titre, description, intervenants, etc.)
-* **Réservations** selon les places disponibles
 * **Commentaires et notation** après visionnage
 
 
