@@ -45,7 +45,6 @@ Avant de démarrer le projet, assure-toi d'avoir installé les éléments suivan
 * **PHP** 8.0 ou supérieur
 * **MySQL** 5.7 ou supérieur
 * **Base de données** (MySQL)
-* **Serveur local** (ex. WAMP, XAMPP ou LAMP)
 
 
 
