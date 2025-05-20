@@ -1,6 +1,6 @@
 # Scriptacle
 
-Ce projet permet de gérer un annuaire de spectacles parisiens, incluant les lieux, les spectacles, les réservations et les commentaires des utilisateurs. Le système intègre des fonctionnalités telles que l'inscription des utilisateurs, la gestion des spectacles et des réservations, ainsi que l'attribution de notes et de commentaires.  
+Ce projet permet de gérer un annuaire de spectacles parisiens, incluant les lieux, les spectacles, les réservations et les commentaires des utilisateurs. Le système intègre des fonctionnalités telles que l'inscription des utilisateurs, la gestion des spectacles et des réservations.
 
 Aperçu de l'application
 
